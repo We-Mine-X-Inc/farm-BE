@@ -1,2 +1,3 @@
 # farm-BE
-Contains language constructs useful for accessing We Mine X Inc. Farm Databases (Storage).
+
+Provides language constructs to make interact with a mongodb database. This is a bring-your-own-database (BYOD) library, and supplies only the models and services to interact with you database.
