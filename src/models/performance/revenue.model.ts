@@ -1,4 +1,4 @@
-import { CoinType } from "@/interfaces/coin-market-info.interface";
+import { CoinType } from "wemine-apis";
 
 export const RevenueSchema = {
   amount: { type: Number },

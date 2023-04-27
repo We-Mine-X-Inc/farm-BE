@@ -1,5 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { Customer } from "@/interfaces/customer.interface";
+import { Customer } from "wemine-apis";
 
 const accountSchema: Schema = new Schema({
   email: {

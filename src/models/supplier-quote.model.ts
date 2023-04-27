@@ -1,5 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { SupplierQuote } from "@/interfaces/supplier-quote.interface";
+import { SupplierQuote } from "wemine-apis";
 
 const supplierQuoteSchema: Schema = new Schema({
   supplierId: {

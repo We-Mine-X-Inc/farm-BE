@@ -1,11 +1,11 @@
-import { CoinType } from "@/interfaces/coin-market-info.interface";
 import {
+  CoinType,
   Contract,
   ContractStage,
   MinerHostingConfigurationStage,
   MinerIntakeStage,
   MinerResaleStage,
-} from "@/interfaces/contract.interface";
+} from "wemine-apis";
 import { model, Schema, Document, Types } from "mongoose";
 
 const contractDurationSchema = {

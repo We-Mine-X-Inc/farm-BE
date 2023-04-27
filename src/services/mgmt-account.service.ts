@@ -1,7 +1,7 @@
-import { CreateMgmtAccountDto } from "@/dtos/mgmt-account.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { MgmtAccount } from "@/interfaces/mgmt-account.interface";
-import mgmtAccountModel from "@/models/mgmt-account.model";
+import { CreateMgmtAccountDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { MgmtAccount } from "wemine-apis";
+import mgmtAccountModel from "@models/mgmt-account.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
@@ -20,13 +20,12 @@ class MgmtAccountService {
     mgmtAccountId: Types.ObjectId
   ): Promise<MgmtAccount> {
     if (isEmpty(mgmtAccountId))
-      throw new HttpException(400, "You're not mgmtAccountId");
+      throw new RpcException(400, "You're not mgmtAccountId");
 
-    const findMgmtAccount: MgmtAccount = await this.mgmtAccounts.findOne({
+    const findMgmtAccount = await this.mgmtAccounts.findOne({
       _id: mgmtAccountId,
     });
-    if (!findMgmtAccount)
-      throw new HttpException(409, "You're not mgmtAccount");
+    if (!findMgmtAccount) throw new RpcException(409, "You're not mgmtAccount");
 
     return findMgmtAccount;
   }
@@ -35,13 +34,13 @@ class MgmtAccountService {
     mgmtAccountData: CreateMgmtAccountDto
   ): Promise<MgmtAccount> {
     if (isEmpty(mgmtAccountData))
-      throw new HttpException(400, "You're not mgmtAccountData");
+      throw new RpcException(400, "You're not mgmtAccountData");
 
-    const findMgmtAccount: MgmtAccount = await this.mgmtAccounts.findOne({
+    const findMgmtAccount = await this.mgmtAccounts.findOne({
       email: mgmtAccountData.email,
     });
     if (findMgmtAccount)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `You're email ${mgmtAccountData.email} already exists`
       );
@@ -58,25 +57,27 @@ class MgmtAccountService {
     mgmtAccountData: CreateMgmtAccountDto
   ): Promise<MgmtAccount> {
     if (isEmpty(mgmtAccountData))
-      throw new HttpException(400, "You're not mgmtAccountData");
+      throw new RpcException(400, "You're not mgmtAccountData");
 
     if (mgmtAccountData.email) {
-      const findMgmtAccount: MgmtAccount = await this.mgmtAccounts.findOne({
+      const findMgmtAccount = await this.mgmtAccounts.findOne({
         email: mgmtAccountData.email,
       });
       if (findMgmtAccount && !findMgmtAccount._id.equals(mgmtAccountId))
-        throw new HttpException(
+        throw new RpcException(
           409,
           `You're email ${mgmtAccountData.email} already exists`
         );
     }
 
-    const updateMgmtAccountById: MgmtAccount =
-      await this.mgmtAccounts.findByIdAndUpdate(mgmtAccountId, {
+    const updateMgmtAccountById = await this.mgmtAccounts.findByIdAndUpdate(
+      mgmtAccountId,
+      {
         ...mgmtAccountData,
-      });
+      }
+    );
     if (!updateMgmtAccountById)
-      throw new HttpException(409, "You're not mgmtAccount");
+      throw new RpcException(409, "You're not mgmtAccount");
 
     return updateMgmtAccountById;
   }
@@ -84,10 +85,11 @@ class MgmtAccountService {
   public async deleteMgmtAccount(
     mgmtAccountId: Types.ObjectId
   ): Promise<MgmtAccount> {
-    const deleteMgmtAccountById: MgmtAccount =
-      await this.mgmtAccounts.findByIdAndDelete(mgmtAccountId);
+    const deleteMgmtAccountById = await this.mgmtAccounts.findByIdAndDelete(
+      mgmtAccountId
+    );
     if (!deleteMgmtAccountById)
-      throw new HttpException(409, "You're not mgmtAccount");
+      throw new RpcException(409, "You're not mgmtAccount");
 
     return deleteMgmtAccountById;
   }

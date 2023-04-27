@@ -3,12 +3,12 @@ import {
   ListPoolWorkerHashRateContributionRequestDto,
   ListPoolWorkerHashRateContributionResponseDto,
 } from "@/dtos/pool-worker-hash-rate-contribution.dto";
-import { HttpException } from "@/exceptions/HttpException";
+import { RpcException } from "@/exceptions/RpcException";
 import {
   PoolWorkerHashRateContribution,
   PoolWorkerHashRateContributionModel,
-} from "@/interfaces/pool-worker-hash-rate-contribution.interface";
-import poolWorkerHashRateContributionModel from "@/models/pool-worker-hash-rate-contribution.model";
+} from "wemine-apis";
+import poolWorkerHashRateContributionModel from "@models/pool-worker-hash-rate-contribution.model";
 import { logger } from "@/utils/logger";
 import { isEmpty } from "@/utils/util";
 import { format as prettyFormat } from "pretty-format";
@@ -22,7 +22,7 @@ class PoolWorkerHashRateContributionService {
     hashRateContribution: AddPoolWorkerHashRateContributionDto
   ) {
     if (isEmpty(hashRateContribution))
-      throw new HttpException(
+      throw new RpcException(
         400,
         "You're not a AddPoolWorkerHashRateContributionDto"
       );
@@ -33,7 +33,7 @@ class PoolWorkerHashRateContributionService {
         timeRange: hashRateContribution.timeRange,
       });
     if (existingContributionRecord.length > 0) {
-      throw new HttpException(400, "TimeRange for this pool already exists.");
+      throw new RpcException(400, "TimeRange for this pool already exists.");
     }
 
     return await this.poolWorkerHashRateContributionModel
@@ -52,7 +52,7 @@ class PoolWorkerHashRateContributionService {
     request: ListPoolWorkerHashRateContributionRequestDto
   ): Promise<ListPoolWorkerHashRateContributionResponseDto> {
     if (isEmpty(request))
-      throw new HttpException(
+      throw new RpcException(
         400,
         "You're not a ListPoolWorkerHashRateContributionRequestDto"
       );

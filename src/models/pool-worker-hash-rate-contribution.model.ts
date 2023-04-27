@@ -1,6 +1,5 @@
-import { PoolWorkerHashRateContribution } from "@/interfaces/pool-worker-hash-rate-contribution.interface";
+import { PoolWorkerHashRateContribution } from "wemine-apis";
 import { model, Schema, Document } from "mongoose";
-import { HashRateSchema } from "./performance/hash-rate.model";
 import { TimeRangeSchema } from "./performance/time.model";
 
 const poolWorkerHashRateContributionSchema: Schema = new Schema({

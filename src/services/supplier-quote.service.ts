@@ -1,7 +1,7 @@
 import { CreateSupplierQuoteDto } from "@/dtos/supplier-quote.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { SupplierQuote } from "@/interfaces/supplier-quote.interface";
-import supplierQuoteModel from "@/models/supplier-quote.model";
+import { RpcException } from "wemine-apis";
+import { SupplierQuote } from "wemine-apis";
+import supplierQuoteModel from "@models/supplier-quote.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
@@ -22,13 +22,13 @@ class SupplierQuoteService {
     supplierQuoteId: Types.ObjectId
   ): Promise<SupplierQuote> {
     if (isEmpty(supplierQuoteId))
-      throw new HttpException(400, "You're not supplierQuoteId");
+      throw new RpcException(400, "You're not supplierQuoteId");
 
     const findSupplierQuote: SupplierQuote = await this.supplierQuotes.findOne({
       _id: supplierQuoteId,
     });
     if (!findSupplierQuote)
-      throw new HttpException(409, "You're not supplierQuote");
+      throw new RpcException(409, "You're not supplierQuote");
 
     return findSupplierQuote;
   }
@@ -37,7 +37,7 @@ class SupplierQuoteService {
     supplierQuoteData: CreateSupplierQuoteDto
   ): Promise<SupplierQuote> {
     if (isEmpty(supplierQuoteData))
-      throw new HttpException(400, "You're not supplierQuoteData");
+      throw new RpcException(400, "You're not supplierQuoteData");
 
     const createSupplierQuoteData: SupplierQuote =
       await this.supplierQuotes.create({ ...supplierQuoteData });
@@ -50,14 +50,14 @@ class SupplierQuoteService {
     supplierQuoteData: CreateSupplierQuoteDto
   ): Promise<SupplierQuote> {
     if (isEmpty(supplierQuoteData))
-      throw new HttpException(400, "You're not supplierQuoteData");
+      throw new RpcException(400, "You're not supplierQuoteData");
 
     const updateSupplierQuoteById: SupplierQuote =
       await this.supplierQuotes.findByIdAndUpdate(supplierQuoteId, {
         ...supplierQuoteData,
       });
     if (!updateSupplierQuoteById)
-      throw new HttpException(409, "You're not supplierQuote");
+      throw new RpcException(409, "You're not supplierQuote");
 
     return updateSupplierQuoteById;
   }
@@ -68,7 +68,7 @@ class SupplierQuoteService {
     const deleteSupplierQuoteById: SupplierQuote =
       await this.supplierQuotes.findByIdAndDelete(supplierQuoteId);
     if (!deleteSupplierQuoteById)
-      throw new HttpException(409, "You're not supplierQuote");
+      throw new RpcException(409, "You're not supplierQuote");
 
     return deleteSupplierQuoteById;
   }

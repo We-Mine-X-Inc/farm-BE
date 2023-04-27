@@ -1,7 +1,7 @@
-import { CreateCustomerDto } from "@/dtos/customer.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { Customer } from "@/interfaces/customer.interface";
-import customerModel from "@/models/customer.model";
+import { CreateCustomerDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { Customer } from "wemine-apis";
+import customerModel from "@models/customer.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
@@ -18,12 +18,12 @@ class CustomerService {
 
   public async findCustomerById(customerId: Types.ObjectId): Promise<Customer> {
     if (isEmpty(customerId))
-      throw new HttpException(400, "You're not customerId");
+      throw new RpcException(400, "You're not customerId");
 
-    const findCustomer: Customer = await this.customers.findOne({
+    const findCustomer = await this.customers.findOne({
       _id: customerId,
     });
-    if (!findCustomer) throw new HttpException(409, "You're not customer");
+    if (!findCustomer) throw new RpcException(409, "You're not customer");
 
     return findCustomer;
   }
@@ -32,13 +32,13 @@ class CustomerService {
     customerData: CreateCustomerDto
   ): Promise<Customer> {
     if (isEmpty(customerData))
-      throw new HttpException(400, "You're not customerData");
+      throw new RpcException(400, "You're not customerData");
 
-    const findCustomer: Customer = await this.customers.findOne({
+    const findCustomer = await this.customers.findOne({
       email: customerData.email,
     });
     if (findCustomer)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `You're email ${customerData.email} already exists`
       );
@@ -55,37 +55,35 @@ class CustomerService {
     customerData: CreateCustomerDto
   ): Promise<Customer> {
     if (isEmpty(customerData))
-      throw new HttpException(400, "You're not customerData");
+      throw new RpcException(400, "You're not customerData");
 
     if (customerData.email) {
-      const findCustomer: Customer = await this.customers.findOne({
+      const findCustomer = await this.customers.findOne({
         email: customerData.email,
       });
       if (findCustomer && !findCustomer._id.equals(customerId))
-        throw new HttpException(
+        throw new RpcException(
           409,
           `You're email ${customerData.email} already exists`
         );
     }
 
-    const updateCustomerById: Customer = await this.customers.findByIdAndUpdate(
+    const updateCustomerById = await this.customers.findByIdAndUpdate(
       customerId,
       {
         ...customerData,
       }
     );
-    if (!updateCustomerById)
-      throw new HttpException(409, "You're not customer");
+    if (!updateCustomerById) throw new RpcException(409, "You're not customer");
 
     return updateCustomerById;
   }
 
   public async deleteCustomer(customerId: Types.ObjectId): Promise<Customer> {
-    const deleteCustomerById: Customer = await this.customers.findByIdAndDelete(
+    const deleteCustomerById = await this.customers.findByIdAndDelete(
       customerId
     );
-    if (!deleteCustomerById)
-      throw new HttpException(409, "You're not customer");
+    if (!deleteCustomerById) throw new RpcException(409, "You're not customer");
 
     return deleteCustomerById;
   }

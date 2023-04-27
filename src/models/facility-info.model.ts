@@ -1,5 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { FacilityInfo } from "@/interfaces/facility-info.interface";
+import { FacilityInfo } from "wemine-apis";
 
 const facilityInfoSchema: Schema = new Schema({
   name: {

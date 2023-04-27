@@ -3,10 +3,10 @@ import {
   ListPoolRevenueRequestDto,
   ListPoolRevenueResponseDto,
 } from "@/dtos/pool-revenue.dto";
-import { HttpException } from "@/exceptions/HttpException";
+import { RpcException } from "@/exceptions/RpcException";
 import { TimeRange } from "@/interfaces/performance/time.interface";
-import { PoolRevenue } from "@/interfaces/pool-revenue.interface";
-import poolRevenueModel from "@/models/pool-revenue.model";
+import { PoolRevenue } from "wemine-apis";
+import poolRevenueModel from "@models/pool-revenue.model";
 import { isEmpty } from "@/utils/util";
 import { format as prettyFormat } from "pretty-format";
 
@@ -16,7 +16,7 @@ class PoolRevenueService {
 
   public async addPoolRevenue(poolRevenue: AddPoolRevenueDto) {
     if (isEmpty(poolRevenue))
-      throw new HttpException(400, "You're not a AddPoolRevenueDto");
+      throw new RpcException(400, "You're not a AddPoolRevenueDto");
 
     return await this.poolRevenueModel.create({
       poolUsername: poolRevenue.poolUsername,
@@ -29,10 +29,10 @@ class PoolRevenueService {
     request: ListPoolRevenueRequestDto
   ): Promise<ListPoolRevenueResponseDto> {
     if (isEmpty(request))
-      throw new HttpException(400, "You're not a AddPoolRevenueDto");
+      throw new RpcException(400, "You're not a AddPoolRevenueDto");
 
     const specifiedTime = request.timeRange || request.timeSingleton;
-    if (!specifiedTime) throw new HttpException(400, "Must specify time.");
+    if (!specifiedTime) throw new RpcException(400, "Must specify time.");
 
     const poolRevenuesPromise = !!request.timeRange
       ? this.buildTimeRangeQuery(request)

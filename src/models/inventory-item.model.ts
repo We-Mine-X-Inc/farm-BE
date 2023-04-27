@@ -4,7 +4,7 @@ import {
   InventoryItem,
   InventoryItemStatus,
   InventoryItemType,
-} from "@/interfaces/inventory-item.interface";
+} from "wemine-apis";
 
 const hashRateRangeSchema = {
   minimum: {

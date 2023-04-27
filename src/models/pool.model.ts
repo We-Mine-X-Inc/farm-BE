@@ -1,5 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { Pool, PoolPurposeType, PoolType } from "@/interfaces/pool.interface";
+import { Pool, PoolPurposeType, PoolType } from "wemine-apis";
 
 const poolSchema: Schema = new Schema({
   creator: {

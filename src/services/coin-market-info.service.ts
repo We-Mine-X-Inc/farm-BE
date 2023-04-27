@@ -1,7 +1,7 @@
-import { CreateCoinMarketInfoDto } from "@/dtos/coin-market-info.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { CoinMarketInfo } from "@/interfaces/coin-market-info.interface";
-import coinMarketInfoModel from "@/models/coin-market-info.model";
+import { CreateCoinMarketInfoDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { CoinMarketInfo } from "wemine-apis";
+import coinMarketInfoModel from "@models/coin-market-info.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
@@ -23,14 +23,13 @@ class CoinMarketInfoService {
     coinMarketInfoId: Types.ObjectId
   ): Promise<CoinMarketInfo> {
     if (isEmpty(coinMarketInfoId._id.id))
-      throw new HttpException(400, "You're not coinMarketInfoId");
+      throw new RpcException(400, "You're not coinMarketInfoId");
 
-    const findCoinMarketInfo: CoinMarketInfo =
-      await this.coinMarketInfos.findOne({
-        _id: coinMarketInfoId,
-      });
+    const findCoinMarketInfo = await this.coinMarketInfos.findOne({
+      _id: coinMarketInfoId,
+    });
     if (!findCoinMarketInfo)
-      throw new HttpException(409, "You're not coinMarketInfo");
+      throw new RpcException(409, "You're not coinMarketInfo");
 
     return findCoinMarketInfo;
   }
@@ -39,14 +38,13 @@ class CoinMarketInfoService {
     coinMarketInfoData: CreateCoinMarketInfoDto
   ): Promise<CoinMarketInfo> {
     if (isEmpty(coinMarketInfoData))
-      throw new HttpException(400, "You're not coinMarketInfoData");
+      throw new RpcException(400, "You're not coinMarketInfoData");
 
-    const findCoinMarketInfo: CoinMarketInfo =
-      await this.coinMarketInfos.findOne({
-        coinType: coinMarketInfoData.coinType,
-      });
+    const findCoinMarketInfo = await this.coinMarketInfos.findOne({
+      coinType: coinMarketInfoData.coinType,
+    });
     if (findCoinMarketInfo)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `A coinMarketInfo for the coinType ${prettyFormat(
           coinMarketInfoData.coinType
@@ -67,30 +65,29 @@ class CoinMarketInfoService {
     coinMarketInfoData: CreateCoinMarketInfoDto
   ): Promise<CoinMarketInfo> {
     if (isEmpty(coinMarketInfoData))
-      throw new HttpException(400, "You're not coinMarketInfoData");
+      throw new RpcException(400, "You're not coinMarketInfoData");
 
     if (coinMarketInfoData.coinType) {
-      const findCoinMarketInfo: CoinMarketInfo =
-        await this.coinMarketInfos.findOne({
-          coinType: coinMarketInfoData.coinType,
-        });
+      const findCoinMarketInfo = await this.coinMarketInfos.findOne({
+        coinType: coinMarketInfoData.coinType,
+      });
       if (
         findCoinMarketInfo &&
         !findCoinMarketInfo._id.equals(coinMarketInfoId)
       )
-        throw new HttpException(
+        throw new RpcException(
           409,
           `You cannot update the coinType of an existing CoinMarketInfo. Create a new object
           if you want a different CoinType. `
         );
     }
 
-    const updateCoinMarketInfoById: CoinMarketInfo =
+    const updateCoinMarketInfoById =
       await this.coinMarketInfos.findByIdAndUpdate(coinMarketInfoId, {
         ...coinMarketInfoData,
       });
     if (!updateCoinMarketInfoById) {
-      throw new HttpException(409, "You're not coinMarketInfo");
+      throw new RpcException(409, "You're not coinMarketInfo");
     }
 
     return updateCoinMarketInfoById;
@@ -99,10 +96,10 @@ class CoinMarketInfoService {
   public async deleteCoinMarketInfo(
     coinMarketInfoId: Types.ObjectId
   ): Promise<CoinMarketInfo> {
-    const deleteCoinMarketInfoById: CoinMarketInfo =
+    const deleteCoinMarketInfoById =
       await this.coinMarketInfos.findByIdAndDelete(coinMarketInfoId);
     if (!deleteCoinMarketInfoById) {
-      throw new HttpException(409, "You're not coinMarketInfo");
+      throw new RpcException(409, "You're not coinMarketInfo");
     }
 
     return deleteCoinMarketInfoById;

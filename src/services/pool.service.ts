@@ -1,7 +1,7 @@
-import { CreatePoolDto } from "@/dtos/pool.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { POOL_FIELDS_TO_POPULATE, Pool } from "@/interfaces/pool.interface";
-import poolModel from "@/models/pool.model";
+import { CreatePoolDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { POOL_FIELDS_TO_POPULATE, Pool } from "wemine-apis";
+import poolModel from "@models/pool.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
@@ -19,24 +19,24 @@ class PoolService {
   }
 
   public async findPoolById(poolId: Types.ObjectId): Promise<Pool> {
-    if (isEmpty(poolId)) throw new HttpException(400, "You're not poolId");
+    if (isEmpty(poolId)) throw new RpcException(400, "You're not poolId");
 
     const findPool = await this.pools
       .findOne({ _id: poolId })
       .populate(POOL_FIELDS_TO_POPULATE);
-    if (!findPool) throw new HttpException(409, "You're not pool");
+    if (!findPool) throw new RpcException(409, "You're not pool");
 
     return findPool;
   }
 
   public async createPool(poolData: CreatePoolDto): Promise<Pool> {
-    if (isEmpty(poolData)) throw new HttpException(400, "You're not poolData");
+    if (isEmpty(poolData)) throw new RpcException(400, "You're not poolData");
 
-    const findPool: Pool = await this.pools.findOne({
+    const findPool = await this.pools.findOne({
       ...poolData,
     });
     if (findPool)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `Duplicate pool not permitted: ${poolData}. `
       );
@@ -47,8 +47,8 @@ class PoolService {
   }
 
   public async deletePool(poolId: Types.ObjectId): Promise<Pool> {
-    const deletePoolById: Pool = await this.pools.findByIdAndDelete(poolId);
-    if (!deletePoolById) throw new HttpException(409, "You're not pool");
+    const deletePoolById = await this.pools.findByIdAndDelete(poolId);
+    if (!deletePoolById) throw new RpcException(409, "You're not pool");
 
     return deletePoolById;
   }

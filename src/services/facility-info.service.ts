@@ -1,7 +1,7 @@
-import { CreateFacilityInfoDto } from "@/dtos/facility-info.dto";
-import { HttpException } from "@exceptions/HttpException";
-import { FacilityInfo } from "@/interfaces/facility-info.interface";
-import facilityInfoModel from "@/models/facility-info.model";
+import { CreateFacilityInfoDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { FacilityInfo } from "wemine-apis";
+import facilityInfoModel from "@models/facility-info.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
@@ -23,13 +23,13 @@ class FacilityInfoService {
     facilityInfoId: Types.ObjectId
   ): Promise<FacilityInfo> {
     if (isEmpty(facilityInfoId._id.id))
-      throw new HttpException(400, "You're not facilityInfoId");
+      throw new RpcException(400, "You're not facilityInfoId");
 
-    const findFacilityInfo: FacilityInfo = await this.facilityInfos.findOne({
+    const findFacilityInfo = await this.facilityInfos.findOne({
       _id: facilityInfoId,
     });
     if (!findFacilityInfo)
-      throw new HttpException(409, "You're not facilityInfo");
+      throw new RpcException(409, "You're not facilityInfo");
 
     return findFacilityInfo;
   }
@@ -38,13 +38,13 @@ class FacilityInfoService {
     facilityInfoData: CreateFacilityInfoDto
   ): Promise<FacilityInfo> {
     if (isEmpty(facilityInfoData))
-      throw new HttpException(400, "You're not facilityInfoData");
+      throw new RpcException(400, "You're not facilityInfoData");
 
-    const findFacilityInfo: FacilityInfo = await this.facilityInfos.findOne({
+    const findFacilityInfo = await this.facilityInfos.findOne({
       name: facilityInfoData.name,
     });
     if (findFacilityInfo)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `A facilityInfo for the miner ${prettyFormat(facilityInfoData.name)}
         already exists.`
@@ -63,27 +63,29 @@ class FacilityInfoService {
     facilityInfoData: CreateFacilityInfoDto
   ): Promise<FacilityInfo> {
     // if (isEmpty(facilityInfoData))
-    //   throw new HttpException(400, "You're not facilityInfoData");
+    //   throw new RpcException(400, "You're not facilityInfoData");
 
     if (facilityInfoData.name) {
-      const findFacilityInfo: FacilityInfo = await this.facilityInfos.findOne({
+      const findFacilityInfo = await this.facilityInfos.findOne({
         name: facilityInfoData.name,
       });
       if (findFacilityInfo && !findFacilityInfo._id.equals(facilityInfoId))
-        throw new HttpException(
+        throw new RpcException(
           409,
           `You cannot apply an existing facilityInfo to a miner. You must create
           a new facilityInfo with the name already set.`
         );
     }
 
-    const updateFacilityInfoById: FacilityInfo =
-      await this.facilityInfos.findByIdAndUpdate(facilityInfoId, {
+    const updateFacilityInfoById = await this.facilityInfos.findByIdAndUpdate(
+      facilityInfoId,
+      {
         ...facilityInfoData,
         isAutoManaged: facilityInfoData.isAutoManaged == "on",
-      });
+      }
+    );
     if (!updateFacilityInfoById) {
-      throw new HttpException(409, "You're not facilityInfo");
+      throw new RpcException(409, "You're not facilityInfo");
     }
 
     return updateFacilityInfoById;
@@ -92,10 +94,11 @@ class FacilityInfoService {
   public async deleteFacilityInfo(
     facilityInfoId: Types.ObjectId
   ): Promise<FacilityInfo> {
-    const deleteFacilityInfoById: FacilityInfo =
-      await this.facilityInfos.findByIdAndDelete(facilityInfoId);
+    const deleteFacilityInfoById = await this.facilityInfos.findByIdAndDelete(
+      facilityInfoId
+    );
     if (!deleteFacilityInfoById) {
-      throw new HttpException(409, "You're not facilityInfo");
+      throw new RpcException(409, "You're not facilityInfo");
     }
 
     return deleteFacilityInfoById;

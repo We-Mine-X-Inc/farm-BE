@@ -1,10 +1,7 @@
-import { CreateInventoryItemDto } from "@/dtos/inventory-item.dto";
-import { HttpException } from "@exceptions/HttpException";
-import {
-  InventoryItem,
-  INVENTORY_ITEM_FIELDS_TO_POPULATE,
-} from "@/interfaces/inventory-item.interface";
-import inventoryItemModel from "@/models/inventory-item.model";
+import { CreateInventoryItemDto } from "wemine-apis";
+import { RpcException } from "wemine-apis";
+import { InventoryItem, INVENTORY_ITEM_FIELDS_TO_POPULATE } from "wemine-apis";
+import inventoryItemModel from "@models/inventory-item.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
@@ -25,14 +22,14 @@ class InventoryItemService {
     inventoryItemId: Types.ObjectId
   ): Promise<InventoryItem> {
     if (isEmpty(inventoryItemId))
-      throw new HttpException(400, "You're not inventoryItemId");
+      throw new RpcException(400, "You're not inventoryItemId");
 
-    const findInventoryItem: InventoryItem = await this.inventoryItems
+    const findInventoryItem = await this.inventoryItems
       .findOne({ _id: inventoryItemId })
       .populate(INVENTORY_ITEM_FIELDS_TO_POPULATE);
 
     if (!findInventoryItem)
-      throw new HttpException(409, "You're not inventoryItem");
+      throw new RpcException(409, "You're not inventoryItem");
 
     return findInventoryItem;
   }
@@ -41,7 +38,7 @@ class InventoryItemService {
     inventoryItemData: CreateInventoryItemDto
   ): Promise<InventoryItem> {
     if (isEmpty(inventoryItemData))
-      throw new HttpException(400, "You're not inventoryItemData");
+      throw new RpcException(400, "You're not inventoryItemData");
 
     const createInventoryItemData: InventoryItem =
       await this.inventoryItems.create({ ...inventoryItemData });
@@ -54,14 +51,16 @@ class InventoryItemService {
     inventoryItemData: CreateInventoryItemDto
   ): Promise<InventoryItem> {
     if (isEmpty(inventoryItemData))
-      throw new HttpException(400, "You're not inventoryItemData");
+      throw new RpcException(400, "You're not inventoryItemData");
 
-    const updateInventoryItemById: InventoryItem =
-      await this.inventoryItems.findByIdAndUpdate(inventoryItemId, {
+    const updateInventoryItemById = await this.inventoryItems.findByIdAndUpdate(
+      inventoryItemId,
+      {
         ...inventoryItemData,
-      });
+      }
+    );
     if (!updateInventoryItemById)
-      throw new HttpException(409, "You're not inventoryItem");
+      throw new RpcException(409, "You're not inventoryItem");
 
     return updateInventoryItemById;
   }
@@ -69,10 +68,11 @@ class InventoryItemService {
   public async deleteInventoryItem(
     inventoryItemId: Types.ObjectId
   ): Promise<InventoryItem> {
-    const deleteInventoryItemById: InventoryItem =
-      await this.inventoryItems.findByIdAndDelete(inventoryItemId);
+    const deleteInventoryItemById = await this.inventoryItems.findByIdAndDelete(
+      inventoryItemId
+    );
     if (!deleteInventoryItemById)
-      throw new HttpException(409, "You're not inventoryItem");
+      throw new RpcException(409, "You're not inventoryItem");
 
     return deleteInventoryItemById;
   }

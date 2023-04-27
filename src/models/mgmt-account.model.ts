@@ -1,5 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { MgmtAccount } from "@/interfaces/mgmt-account.interface";
+import { MgmtAccount } from "wemine-apis";
 
 const contractModePermissionsSchema = {
   canRead: {

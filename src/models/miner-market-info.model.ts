@@ -1,6 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import { MinerMarketInfo } from "@/interfaces/miner-market-info.interface";
-import { CoinType } from "@/interfaces/coin-market-info.interface";
+import { CoinType, MinerMarketInfo } from "wemine-apis";
 
 const minerMarketInfoSchema: Schema = new Schema({
   minerInventoryItem: {

@@ -7,15 +7,15 @@ import {
 import ContractService from "./contract.service";
 import PoolWorkerHashRateContributionService from "./pool-worker-hash-rate-contribution.service";
 import { TimeRange } from "@/interfaces/performance/time.interface";
-import { PoolRevenue } from "@/interfaces/pool-revenue.interface";
-import { PoolWorkerHashRateContribution } from "@/interfaces/pool-worker-hash-rate-contribution.interface";
+import { PoolRevenue } from "wemine-apis";
+import { PoolWorkerHashRateContribution } from "wemine-apis";
 import PoolRevenueService from "./pool-revenue.service";
 import { Revenue } from "@/interfaces/performance/revenue.interface";
 import { revenueDifference, revenueSum } from "@/arithmetic/revenue-operations";
 import { ONE_HOUR_IN_MILLIS } from "@/constants/time";
-import { CoinType } from "@/interfaces/coin-market-info.interface";
-import { HashRateUnitType } from "@/interfaces/performance/hash-rate.interface";
-import { Miner } from "@/interfaces/miner.interface";
+import { CoinType } from "wemine-apis";
+import { HashRateUnitType } from "wemine-apis";
+import { Miner } from "wemine-apis";
 
 const UNKNOWN_REVENUE = { amount: 0, coinType: CoinType.UNKNOWN };
 

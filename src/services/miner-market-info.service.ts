@@ -1,10 +1,10 @@
 import { CreateMinerMarketInfoDto } from "@/dtos/miner-market-info.dto";
-import { HttpException } from "@exceptions/HttpException";
+import { RpcException } from "wemine-apis";
 import {
   MinerMarketInfo,
   MINER_MARKET_INFO_FIELDS_TO_POPULATE,
-} from "@/interfaces/miner-market-info.interface";
-import minerMarketInfoModel from "@/models/miner-market-info.model";
+} from "wemine-apis";
+import minerMarketInfoModel from "@models/miner-market-info.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
@@ -26,7 +26,7 @@ class MinerMarketInfoService {
     minerMarketInfoId: Types.ObjectId
   ): Promise<MinerMarketInfo> {
     if (isEmpty(minerMarketInfoId._id.id))
-      throw new HttpException(400, "You're not minerMarketInfoId");
+      throw new RpcException(400, "You're not minerMarketInfoId");
 
     const findMinerMarketInfo: MinerMarketInfo =
       await await this.minerMarketInfos
@@ -34,7 +34,7 @@ class MinerMarketInfoService {
         .populate(MINER_MARKET_INFO_FIELDS_TO_POPULATE);
 
     if (!findMinerMarketInfo)
-      throw new HttpException(409, "You're not minerMarketInfo");
+      throw new RpcException(409, "You're not minerMarketInfo");
 
     return findMinerMarketInfo;
   }
@@ -43,7 +43,7 @@ class MinerMarketInfoService {
     minerMarketInfoData: CreateMinerMarketInfoDto
   ): Promise<MinerMarketInfo> {
     if (isEmpty(minerMarketInfoData))
-      throw new HttpException(400, "You're not minerMarketInfoData");
+      throw new RpcException(400, "You're not minerMarketInfoData");
 
     const findMinerMarketInfo: MinerMarketInfo =
       await this.minerMarketInfos.findOne({
@@ -51,7 +51,7 @@ class MinerMarketInfoService {
         minerInventoryItem: minerMarketInfoData.minerInventoryItem,
       });
     if (findMinerMarketInfo)
-      throw new HttpException(
+      throw new RpcException(
         409,
         `A minerMarketInfo for the info ${prettyFormat(minerMarketInfoData)}
         already exists.`
@@ -70,7 +70,7 @@ class MinerMarketInfoService {
     minerMarketInfoData: CreateMinerMarketInfoDto
   ): Promise<MinerMarketInfo> {
     if (isEmpty(minerMarketInfoData))
-      throw new HttpException(400, "You're not minerMarketInfoData");
+      throw new RpcException(400, "You're not minerMarketInfoData");
 
     if (
       minerMarketInfoData.coinType &&
@@ -85,7 +85,7 @@ class MinerMarketInfoService {
         findMinerMarketInfo &&
         !findMinerMarketInfo._id.equals(minerMarketInfoId)
       )
-        throw new HttpException(
+        throw new RpcException(
           409,
           `You change the CoinType or ItemId of an existing MinerMarketInfo object. Please create
           a new object if you want a different CoinType + InventoryItem pair.`
@@ -97,7 +97,7 @@ class MinerMarketInfoService {
         ...minerMarketInfoData,
       });
     if (!updateMinerMarketInfoById) {
-      throw new HttpException(409, "You're not minerMarketInfo");
+      throw new RpcException(409, "You're not minerMarketInfo");
     }
 
     return updateMinerMarketInfoById;
@@ -109,7 +109,7 @@ class MinerMarketInfoService {
     const deleteMinerMarketInfoById: MinerMarketInfo =
       await this.minerMarketInfos.findByIdAndDelete(minerMarketInfoId);
     if (!deleteMinerMarketInfoById) {
-      throw new HttpException(409, "You're not minerMarketInfo");
+      throw new RpcException(409, "You're not minerMarketInfo");
     }
 
     return deleteMinerMarketInfoById;

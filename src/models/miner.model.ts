@@ -1,9 +1,5 @@
 import { model, Schema, Document } from "mongoose";
-import {
-  Miner,
-  MinerNetworkStatus,
-  MinerApiType,
-} from "@/interfaces/miner.interface";
+import { Miner, MinerNetworkStatus, MinerApiType } from "wemine-apis";
 
 const minerStatusSchema = {
   lastOnlineDate: {

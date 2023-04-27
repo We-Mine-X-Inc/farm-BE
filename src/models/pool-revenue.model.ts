@@ -1,4 +1,4 @@
-import { PoolRevenue } from "@/interfaces/pool-revenue.interface";
+import { PoolRevenue } from "wemine-apis";
 import { model, Schema, Document } from "mongoose";
 import { RevenueSchema } from "./performance/revenue.model";
 import { TimeRangeSchema } from "./performance/time.model";
