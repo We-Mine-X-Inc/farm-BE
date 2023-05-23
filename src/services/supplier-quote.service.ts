@@ -1,4 +1,4 @@
-import { CreateSupplierQuoteDto } from "@/dtos/supplier-quote.dto";
+import { CreateSupplierQuoteDto } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { SupplierQuote } from "wemine-apis";
 import supplierQuoteModel from "@models/supplier-quote.model";
@@ -24,7 +24,7 @@ class SupplierQuoteService {
     if (isEmpty(supplierQuoteId))
       throw new RpcException(400, "You're not supplierQuoteId");
 
-    const findSupplierQuote: SupplierQuote = await this.supplierQuotes.findOne({
+    const findSupplierQuote = await this.supplierQuotes.findOne({
       _id: supplierQuoteId,
     });
     if (!findSupplierQuote)
@@ -52,10 +52,12 @@ class SupplierQuoteService {
     if (isEmpty(supplierQuoteData))
       throw new RpcException(400, "You're not supplierQuoteData");
 
-    const updateSupplierQuoteById: SupplierQuote =
-      await this.supplierQuotes.findByIdAndUpdate(supplierQuoteId, {
+    const updateSupplierQuoteById = await this.supplierQuotes.findByIdAndUpdate(
+      supplierQuoteId,
+      {
         ...supplierQuoteData,
-      });
+      }
+    );
     if (!updateSupplierQuoteById)
       throw new RpcException(409, "You're not supplierQuote");
 
@@ -65,8 +67,9 @@ class SupplierQuoteService {
   public async deleteSupplierQuote(
     supplierQuoteId: Types.ObjectId
   ): Promise<SupplierQuote> {
-    const deleteSupplierQuoteById: SupplierQuote =
-      await this.supplierQuotes.findByIdAndDelete(supplierQuoteId);
+    const deleteSupplierQuoteById = await this.supplierQuotes.findByIdAndDelete(
+      supplierQuoteId
+    );
     if (!deleteSupplierQuoteById)
       throw new RpcException(409, "You're not supplierQuote");
 

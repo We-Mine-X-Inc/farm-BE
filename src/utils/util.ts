@@ -1,5 +1,4 @@
 import { Types } from "mongoose";
-import { format as prettyFormat } from "pretty-format";
 
 /**
  * @method isEmpty

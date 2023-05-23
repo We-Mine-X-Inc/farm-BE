@@ -1,10 +1,9 @@
-import { CreateMinerDto } from "@/dtos/miner.dto";
+import { CreateMinerDto } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { Miner, MINER_FILEDS_TO_POPULATE } from "wemine-apis";
 import minerModel from "@models/miner.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
-import { format as prettyFormat } from "pretty-format";
 
 /**
  * Serves data from the DB based on the fetched/mutated information.
@@ -23,7 +22,7 @@ class MinerService {
     if (isEmpty(friendlyMinerId))
       throw new RpcException(400, "You're not a friendlyMinerId");
 
-    const findMiner: Miner = await this.miners
+    const findMiner = await this.miners
       .findOne({ friendlyMinerId })
       .populate(MINER_FILEDS_TO_POPULATE);
 
@@ -35,7 +34,7 @@ class MinerService {
   public async findMinerById(minerId: Types.ObjectId): Promise<Miner> {
     if (isEmpty(minerId.id)) throw new RpcException(400, "You're not minerId");
 
-    const findMiner: Miner = await this.miners
+    const findMiner = await this.miners
       .findOne({ _id: minerId })
       .populate(MINER_FILEDS_TO_POPULATE);
 
@@ -47,13 +46,13 @@ class MinerService {
   public async createMiner(minerData: CreateMinerDto): Promise<Miner> {
     if (isEmpty(minerData)) throw new RpcException(400, "You're not minerData");
 
-    const findMiner: Miner = await this.miners.findOne({
-      macAddress: minerData.macAddress,
+    const findMiner = await this.miners.findOne({
+      macAddress: minerData.initialFields?.macAddress,
     });
     if (findMiner)
       throw new RpcException(
         409,
-        `You're MAC Address ${minerData.macAddress} already exists`
+        `You're MAC Address ${minerData.initialFields?.macAddress} already exists`
       );
 
     const createMinerData: Miner = await this.miners.create({ ...minerData });
@@ -67,28 +66,27 @@ class MinerService {
   ): Promise<Miner> {
     if (isEmpty(minerData)) throw new RpcException(400, "You're not minerData");
 
-    if (minerData.macAddress) {
-      const findMiner: Miner = await this.miners.findOne({
-        macAddress: minerData.macAddress,
+    if (minerData.initialFields?.macAddress) {
+      const findMiner = await this.miners.findOne({
+        macAddress: minerData.initialFields?.macAddress,
       });
       if (findMiner && !findMiner._id.equals(minerId))
         throw new RpcException(
           409,
-          `You're MAC Address ${minerData.macAddress} already exists.`
+          `You're MAC Address ${minerData.initialFields?.macAddress} already exists.`
         );
     }
 
-    const updateMinerById: Miner = await this.miners.findByIdAndUpdate(
-      minerId,
-      { ...minerData }
-    );
+    const updateMinerById = await this.miners.findByIdAndUpdate(minerId, {
+      ...minerData,
+    });
     if (!updateMinerById) throw new RpcException(409, "You're not miner.");
 
     return updateMinerById;
   }
 
   public async deleteMiner(minerId: Types.ObjectId): Promise<Miner> {
-    const deleteMinerById: Miner = await this.miners.findByIdAndDelete(minerId);
+    const deleteMinerById = await this.miners.findByIdAndDelete(minerId);
     if (!deleteMinerById) throw new RpcException(409, "You're not miner.");
 
     return deleteMinerById;

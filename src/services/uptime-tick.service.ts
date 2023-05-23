@@ -1,5 +1,5 @@
-import { CreateUptimeTickDto } from "@/dtos/uptime-tick.dto";
-import { UptimeTick } from "@interfaces/uptime-tick.interface";
+import { CreateUptimeTickDto } from "wemine-apis";
+import { UptimeTick } from "wemine-apis";
 import uptimeTickModel from "@models/uptime-tick.model";
 import { isEmpty } from "@utils/util";
 
@@ -10,7 +10,7 @@ class UptimeTickService {
     return await this.uptimeTicks.find().lean();
   }
 
-  public async findMostRecentTick(): Promise<UptimeTick> {
+  public async findMostRecentTick(): Promise<UptimeTick | null> {
     return await this.uptimeTicks.findOne().sort({ datetime: -1 });
   }
 

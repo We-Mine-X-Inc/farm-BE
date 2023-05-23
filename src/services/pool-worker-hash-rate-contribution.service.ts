@@ -2,16 +2,14 @@ import {
   AddPoolWorkerHashRateContributionDto,
   ListPoolWorkerHashRateContributionRequestDto,
   ListPoolWorkerHashRateContributionResponseDto,
-} from "@/dtos/pool-worker-hash-rate-contribution.dto";
-import { RpcException } from "@/exceptions/RpcException";
+} from "wemine-apis";
+import { RpcException } from "wemine-apis";
 import {
   PoolWorkerHashRateContribution,
   PoolWorkerHashRateContributionModel,
 } from "wemine-apis";
 import poolWorkerHashRateContributionModel from "@models/pool-worker-hash-rate-contribution.model";
-import { logger } from "@/utils/logger";
-import { isEmpty } from "@/utils/util";
-import { format as prettyFormat } from "pretty-format";
+import { isEmpty } from "@utils/util";
 
 /** CRUD operations for hash rate metrics for pool workers for a miner. */
 class PoolWorkerHashRateContributionService {
@@ -64,25 +62,25 @@ class PoolWorkerHashRateContributionService {
             // First timeRange if startInMillis lands in the middle a stored range.
             poolUsername: { $in: request.poolUsernames },
             "timeRange.startInMillis": {
-              $lte: request.timeRange.startInMillis,
+              $lte: request.timeRange?.startInMillis,
             },
-            "timeRange.endInMillis": { $gte: request.timeRange.startInMillis },
+            "timeRange.endInMillis": { $gte: request.timeRange?.startInMillis },
           },
           {
             // Middle timeRanges if any exist.
             poolUsername: { $in: request.poolUsernames },
             "timeRange.startInMillis": {
-              $gte: request.timeRange.startInMillis,
+              $gte: request.timeRange?.startInMillis,
             },
-            "timeRange.endInMillis": { $lte: request.timeRange.endInMillis },
+            "timeRange.endInMillis": { $lte: request.timeRange?.endInMillis },
           },
           {
             // Last timeRange if endInMillis lands in the middle a stored range.
             poolUsername: { $in: request.poolUsernames },
             "timeRange.startInMillis": {
-              $lte: request.timeRange.endInMillis,
+              $lte: request.timeRange?.endInMillis,
             },
-            "timeRange.endInMillis": { $gte: request.timeRange.endInMillis },
+            "timeRange.endInMillis": { $gte: request.timeRange?.endInMillis },
           },
         ],
       });
@@ -95,7 +93,7 @@ class PoolWorkerHashRateContributionService {
   }
 
   private convertPoolWorkerHashRateContribution(
-    contributionModel
+    contributionModel: PoolWorkerHashRateContributionModel
   ): PoolWorkerHashRateContribution {
     return {
       _id: contributionModel._id,

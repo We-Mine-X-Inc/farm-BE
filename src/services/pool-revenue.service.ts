@@ -2,12 +2,10 @@ import {
   AddPoolRevenueDto,
   ListPoolRevenueRequestDto,
   ListPoolRevenueResponseDto,
-} from "@/dtos/pool-revenue.dto";
-import { RpcException } from "@/exceptions/RpcException";
-import { TimeRange } from "@/interfaces/performance/time.interface";
-import { PoolRevenue } from "wemine-apis";
+} from "wemine-apis";
+import { RpcException } from "wemine-apis";
 import poolRevenueModel from "@models/pool-revenue.model";
-import { isEmpty } from "@/utils/util";
+import { isEmpty } from "@utils/util";
 import { format as prettyFormat } from "pretty-format";
 
 /** CRUD operations for revenue metrics associated with miners. */
@@ -50,25 +48,25 @@ class PoolRevenueService {
           // First timeRange if startInMillis lands in the middle a stored range.
           poolUsername: { $in: request.poolUsernames },
           "timeRange.startInMillis": {
-            $lte: request.timeRange.startInMillis,
+            $lte: request.timeRange?.startInMillis,
           },
-          "timeRange.endInMillis": { $gte: request.timeRange.startInMillis },
+          "timeRange.endInMillis": { $gte: request.timeRange?.startInMillis },
         },
         {
           // Middle timeRanges if any exist.
           poolUsername: { $in: request.poolUsernames },
           "timeRange.startInMillis": {
-            $gte: request.timeRange.startInMillis,
+            $gte: request.timeRange?.startInMillis,
           },
-          "timeRange.endInMillis": { $lte: request.timeRange.endInMillis },
+          "timeRange.endInMillis": { $lte: request.timeRange?.endInMillis },
         },
         {
           // Last timeRange if endInMillis lands in the middle a stored range.
           poolUsername: { $in: request.poolUsernames },
           "timeRange.startInMillis": {
-            $lte: request.timeRange.endInMillis,
+            $lte: request.timeRange?.endInMillis,
           },
-          "timeRange.endInMillis": { $gte: request.timeRange.endInMillis },
+          "timeRange.endInMillis": { $gte: request.timeRange?.endInMillis },
         },
       ],
     });
@@ -79,9 +77,9 @@ class PoolRevenueService {
       .find({
         poolUsername: { $in: request.poolUsernames },
         "timeRange.startInMillis": {
-          $lte: request.timeSingleton.timeInMillis,
+          $lte: request.timeSingleton?.timeInMillis,
         },
-        "timeRange.endInMillis": { $gte: request.timeSingleton.timeInMillis },
+        "timeRange.endInMillis": { $gte: request.timeSingleton?.timeInMillis },
       })
       .sort({ "timeRange.startInMillis": 1 })
       .limit(1);

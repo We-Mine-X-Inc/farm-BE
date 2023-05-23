@@ -1,4 +1,4 @@
-import { PoolWorkerHashRateContribution } from "wemine-apis";
+import { PoolWorkerHashRateContributionModel } from "wemine-apis";
 import { model, Schema, Document } from "mongoose";
 import { TimeRangeSchema } from "./performance/time.model";
 
@@ -23,7 +23,7 @@ const poolWorkerHashRateContributionSchema: Schema = new Schema({
 });
 
 const poolWorkerHashRateContributionModel = model<
-  PoolWorkerHashRateContribution & Document
+  PoolWorkerHashRateContributionModel & Document
 >("PoolWorkerHashRateContribution", poolWorkerHashRateContributionSchema);
 
 export default poolWorkerHashRateContributionModel;

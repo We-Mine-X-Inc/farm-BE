@@ -1,4 +1,4 @@
-import { CreateMinerMarketInfoDto } from "@/dtos/miner-market-info.dto";
+import { CreateMinerMarketInfoDto } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import {
   MinerMarketInfo,
@@ -28,10 +28,9 @@ class MinerMarketInfoService {
     if (isEmpty(minerMarketInfoId._id.id))
       throw new RpcException(400, "You're not minerMarketInfoId");
 
-    const findMinerMarketInfo: MinerMarketInfo =
-      await await this.minerMarketInfos
-        .findOne({ _id: minerMarketInfoId })
-        .populate(MINER_MARKET_INFO_FIELDS_TO_POPULATE);
+    const findMinerMarketInfo = await await this.minerMarketInfos
+      .findOne({ _id: minerMarketInfoId })
+      .populate(MINER_MARKET_INFO_FIELDS_TO_POPULATE);
 
     if (!findMinerMarketInfo)
       throw new RpcException(409, "You're not minerMarketInfo");
@@ -45,11 +44,10 @@ class MinerMarketInfoService {
     if (isEmpty(minerMarketInfoData))
       throw new RpcException(400, "You're not minerMarketInfoData");
 
-    const findMinerMarketInfo: MinerMarketInfo =
-      await this.minerMarketInfos.findOne({
-        coinType: minerMarketInfoData.coinType,
-        minerInventoryItem: minerMarketInfoData.minerInventoryItem,
-      });
+    const findMinerMarketInfo = await this.minerMarketInfos.findOne({
+      coinType: minerMarketInfoData.coinType,
+      minerInventoryItem: minerMarketInfoData.minerInventoryItem,
+    });
     if (findMinerMarketInfo)
       throw new RpcException(
         409,
@@ -76,11 +74,10 @@ class MinerMarketInfoService {
       minerMarketInfoData.coinType &&
       minerMarketInfoData.minerInventoryItem
     ) {
-      const findMinerMarketInfo: MinerMarketInfo =
-        await this.minerMarketInfos.findOne({
-          coinType: minerMarketInfoData.coinType,
-          minerInventoryItem: minerMarketInfoData.minerInventoryItem,
-        });
+      const findMinerMarketInfo = await this.minerMarketInfos.findOne({
+        coinType: minerMarketInfoData.coinType,
+        minerInventoryItem: minerMarketInfoData.minerInventoryItem,
+      });
       if (
         findMinerMarketInfo &&
         !findMinerMarketInfo._id.equals(minerMarketInfoId)
@@ -92,7 +89,7 @@ class MinerMarketInfoService {
         );
     }
 
-    const updateMinerMarketInfoById: MinerMarketInfo =
+    const updateMinerMarketInfoById =
       await this.minerMarketInfos.findByIdAndUpdate(minerMarketInfoId, {
         ...minerMarketInfoData,
       });
@@ -106,7 +103,7 @@ class MinerMarketInfoService {
   public async deleteMinerMarketInfo(
     minerMarketInfoId: Types.ObjectId
   ): Promise<MinerMarketInfo> {
-    const deleteMinerMarketInfoById: MinerMarketInfo =
+    const deleteMinerMarketInfoById =
       await this.minerMarketInfos.findByIdAndDelete(minerMarketInfoId);
     if (!deleteMinerMarketInfoById) {
       throw new RpcException(409, "You're not minerMarketInfo");

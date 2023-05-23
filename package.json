@@ -9,6 +9,7 @@
     "test": "tests"
   },
   "dependencies": {
+    "envalid": "^7.3.1",
     "mongoose": "^7.0.5",
     "wemine-apis": "github:We-Mine-X-Inc/APIs#main"
   },
