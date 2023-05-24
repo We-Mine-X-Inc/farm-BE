@@ -2,6 +2,8 @@
   "name": "farm-be",
   "version": "1.0.0",
   "description": "Contains language constructs useful for accessing We Mine X Inc. Farm Database Backends (Storage).",
+  "main": "lib/services.js",
+  "types": "lib/services.d.ts",
   "files": [
     "lib/**/*"
   ],

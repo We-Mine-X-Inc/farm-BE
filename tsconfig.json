@@ -42,6 +42,6 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json"],
+  "include": ["services.ts", "src/**/*.ts", "src/**/*.json"],
   "exclude": ["node_modules", "tests"]
 }
