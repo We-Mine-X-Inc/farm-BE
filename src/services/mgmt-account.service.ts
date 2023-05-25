@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the MgmtAccount database resource.
  */
-class MgmtAccountService {
+export class MgmtAccountService {
   public mgmtAccounts = mgmtAccountModel;
 
   public async findAllMgmtAccount(): Promise<MgmtAccount[]> {
@@ -94,5 +94,3 @@ class MgmtAccountService {
     return deleteMgmtAccountById;
   }
 }
-
-export default MgmtAccountService;

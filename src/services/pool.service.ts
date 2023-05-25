@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Pool database resource.
  */
-class PoolService {
+export class PoolService {
   public pools = poolModel;
 
   public async findAllPools(): Promise<Pool[]> {
@@ -53,5 +53,3 @@ class PoolService {
     return deletePoolById;
   }
 }
-
-export default PoolService;

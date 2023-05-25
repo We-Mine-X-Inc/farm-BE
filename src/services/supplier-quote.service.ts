@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the SupplierQuote database resource.
  */
-class SupplierQuoteService {
+export class SupplierQuoteService {
   public supplierQuotes = supplierQuoteModel;
 
   public async findAllSupplierQuotes(): Promise<SupplierQuote[]> {
@@ -76,5 +76,3 @@ class SupplierQuoteService {
     return deleteSupplierQuoteById;
   }
 }
-
-export default SupplierQuoteService;

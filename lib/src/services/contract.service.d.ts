@@ -29,9 +29,9 @@ export type GetContractRequest = {
     minerId: Types.ObjectId;
 };
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Contract database resource.
  */
-declare class ContractService {
+export declare class ContractService {
     contracts: import("mongoose").Model<Contract & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Contract & import("mongoose").Document<any, any, any>> & Omit<Contract & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -42,5 +42,4 @@ declare class ContractService {
     updateContract(request: UpdateContractDto): Promise<Contract>;
     deleteContract(contractId: Types.ObjectId): Promise<Contract>;
 }
-export default ContractService;
 //# sourceMappingURL=contract.service.d.ts.map

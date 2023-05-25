@@ -25,7 +25,10 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { CreateUptimeTickDto } from "wemine-apis";
 import { UptimeTick } from "wemine-apis";
-declare class UptimeTickService {
+/**
+ * Exposes operations allowable on the UptimeTick database resource.
+ */
+export declare class UptimeTickService {
     uptimeTicks: import("mongoose").Model<UptimeTick & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, UptimeTick & import("mongoose").Document<any, any, any>> & Omit<UptimeTick & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }, never>, any>;
@@ -34,5 +37,4 @@ declare class UptimeTickService {
     createUptimeTick(uptimeTickData: CreateUptimeTickDto): Promise<UptimeTick>;
     deleteAll(thresholdDate: Date): Promise<Number>;
 }
-export default UptimeTickService;
 //# sourceMappingURL=uptime-tick.service.d.ts.map

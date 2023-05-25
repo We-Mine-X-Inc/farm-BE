@@ -26,9 +26,9 @@ import { CreateMgmtAccountDto } from "wemine-apis";
 import { MgmtAccount } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the MgmtAccount database resource.
  */
-declare class MgmtAccountService {
+export declare class MgmtAccountService {
     mgmtAccounts: import("mongoose").Model<MgmtAccount & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, MgmtAccount & import("mongoose").Document<any, any, any>> & Omit<MgmtAccount & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class MgmtAccountService {
     updateMgmtAccount(mgmtAccountId: Types.ObjectId, mgmtAccountData: CreateMgmtAccountDto): Promise<MgmtAccount>;
     deleteMgmtAccount(mgmtAccountId: Types.ObjectId): Promise<MgmtAccount>;
 }
-export default MgmtAccountService;
 //# sourceMappingURL=mgmt-account.service.d.ts.map

@@ -26,9 +26,9 @@ import { CreateSupplierQuoteDto } from "wemine-apis";
 import { SupplierQuote } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the SupplierQuote database resource.
  */
-declare class SupplierQuoteService {
+export declare class SupplierQuoteService {
     supplierQuotes: import("mongoose").Model<SupplierQuote & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, SupplierQuote & import("mongoose").Document<any, any, any>> & Omit<SupplierQuote & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class SupplierQuoteService {
     updateSupplierQuote(supplierQuoteId: Types.ObjectId, supplierQuoteData: CreateSupplierQuoteDto): Promise<SupplierQuote>;
     deleteSupplierQuote(supplierQuoteId: Types.ObjectId): Promise<SupplierQuote>;
 }
-export default SupplierQuoteService;
 //# sourceMappingURL=supplier-quote.service.d.ts.map

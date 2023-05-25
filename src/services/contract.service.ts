@@ -11,9 +11,9 @@ export type GetContractRequest = {
 };
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Contract database resource.
  */
-class ContractService {
+export class ContractService {
   public contracts = contractModel;
 
   public async findAllContracts(): Promise<Contract[]> {
@@ -108,5 +108,3 @@ class ContractService {
     return deleteContractById;
   }
 }
-
-export default ContractService;

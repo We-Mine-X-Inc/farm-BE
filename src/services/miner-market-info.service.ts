@@ -10,9 +10,9 @@ import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the MinerMarketInfo database resource.
  */
-class MinerMarketInfoService {
+export class MinerMarketInfoService {
   public minerMarketInfos = minerMarketInfoModel;
 
   public async findAllMinerMarketInfos(): Promise<MinerMarketInfo[]> {
@@ -112,5 +112,3 @@ class MinerMarketInfoService {
     return deleteMinerMarketInfoById;
   }
 }
-
-export default MinerMarketInfoService;

@@ -26,9 +26,9 @@ import { CreatePoolDto } from "wemine-apis";
 import { Pool } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Pool database resource.
  */
-declare class PoolService {
+export declare class PoolService {
     pools: import("mongoose").Model<Pool & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Pool & import("mongoose").Document<any, any, any>> & Omit<Pool & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -37,5 +37,4 @@ declare class PoolService {
     createPool(poolData: CreatePoolDto): Promise<Pool>;
     deletePool(poolId: Types.ObjectId): Promise<Pool>;
 }
-export default PoolService;
 //# sourceMappingURL=pool.service.d.ts.map

@@ -26,9 +26,9 @@ import { CreateCustomerDto } from "wemine-apis";
 import { Customer } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Customer database resource.
  */
-declare class CustomerService {
+export declare class CustomerService {
     customers: import("mongoose").Model<Customer & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Customer & import("mongoose").Document<any, any, any>> & Omit<Customer & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class CustomerService {
     updateCustomer(customerId: Types.ObjectId, customerData: CreateCustomerDto): Promise<Customer>;
     deleteCustomer(customerId: Types.ObjectId): Promise<Customer>;
 }
-export default CustomerService;
 //# sourceMappingURL=customer.service.d.ts.map

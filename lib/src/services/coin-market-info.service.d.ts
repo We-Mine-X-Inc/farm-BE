@@ -26,9 +26,9 @@ import { CreateCoinMarketInfoDto } from "wemine-apis";
 import { CoinMarketInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the CoinMarketInfo database resource.
  */
-declare class CoinMarketInfoService {
+export declare class CoinMarketInfoService {
     coinMarketInfos: import("mongoose").Model<CoinMarketInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, CoinMarketInfo & import("mongoose").Document<any, any, any>> & Omit<CoinMarketInfo & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class CoinMarketInfoService {
     updateCoinMarketInfo(coinMarketInfoId: Types.ObjectId, coinMarketInfoData: CreateCoinMarketInfoDto): Promise<CoinMarketInfo>;
     deleteCoinMarketInfo(coinMarketInfoId: Types.ObjectId): Promise<CoinMarketInfo>;
 }
-export default CoinMarketInfoService;
 //# sourceMappingURL=coin-market-info.service.d.ts.map

@@ -26,9 +26,9 @@ import { CreateInventoryItemDto } from "wemine-apis";
 import { InventoryItem } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the InventoryItem database resource.
  */
-declare class InventoryItemService {
+export declare class InventoryItemService {
     inventoryItems: import("mongoose").Model<InventoryItem & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, InventoryItem & import("mongoose").Document<any, any, any>> & Omit<InventoryItem & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class InventoryItemService {
     updateInventoryItem(inventoryItemId: Types.ObjectId, inventoryItemData: CreateInventoryItemDto): Promise<InventoryItem>;
     deleteInventoryItem(inventoryItemId: Types.ObjectId): Promise<InventoryItem>;
 }
-export default InventoryItemService;
 //# sourceMappingURL=inventory-item.service.d.ts.map

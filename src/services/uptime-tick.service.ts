@@ -3,7 +3,10 @@ import { UptimeTick } from "wemine-apis";
 import uptimeTickModel from "@models/uptime-tick.model";
 import { isEmpty } from "@utils/util";
 
-class UptimeTickService {
+/**
+ * Exposes operations allowable on the UptimeTick database resource.
+ */
+export class UptimeTickService {
   public uptimeTicks = uptimeTickModel;
 
   public async findAllTicks(): Promise<UptimeTick[]> {
@@ -31,5 +34,3 @@ class UptimeTickService {
     return deletionOutcome.deletedCount;
   }
 }
-
-export default UptimeTickService;

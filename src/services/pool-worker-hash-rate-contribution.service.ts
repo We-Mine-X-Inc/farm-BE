@@ -12,7 +12,7 @@ import poolWorkerHashRateContributionModel from "@models/pool-worker-hash-rate-c
 import { isEmpty } from "@utils/util";
 
 /** CRUD operations for hash rate metrics for pool workers for a miner. */
-class PoolWorkerHashRateContributionService {
+export class PoolWorkerHashRateContributionService {
   private poolWorkerHashRateContributionModel =
     poolWorkerHashRateContributionModel;
 
@@ -104,5 +104,3 @@ class PoolWorkerHashRateContributionService {
     };
   }
 }
-
-export default PoolWorkerHashRateContributionService;

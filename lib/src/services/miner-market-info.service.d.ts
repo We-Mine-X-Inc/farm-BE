@@ -26,9 +26,9 @@ import { CreateMinerMarketInfoDto } from "wemine-apis";
 import { MinerMarketInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the MinerMarketInfo database resource.
  */
-declare class MinerMarketInfoService {
+export declare class MinerMarketInfoService {
     minerMarketInfos: import("mongoose").Model<MinerMarketInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, MinerMarketInfo & import("mongoose").Document<any, any, any>> & Omit<MinerMarketInfo & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class MinerMarketInfoService {
     updateMinerMarketInfo(minerMarketInfoId: Types.ObjectId, minerMarketInfoData: CreateMinerMarketInfoDto): Promise<MinerMarketInfo>;
     deleteMinerMarketInfo(minerMarketInfoId: Types.ObjectId): Promise<MinerMarketInfo>;
 }
-export default MinerMarketInfoService;
 //# sourceMappingURL=miner-market-info.service.d.ts.map

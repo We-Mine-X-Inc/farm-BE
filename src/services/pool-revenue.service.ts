@@ -9,7 +9,7 @@ import { isEmpty } from "@utils/util";
 import { format as prettyFormat } from "pretty-format";
 
 /** CRUD operations for revenue metrics associated with miners. */
-class PoolRevenueService {
+export class PoolRevenueService {
   private poolRevenueModel = poolRevenueModel;
 
   public async addPoolRevenue(poolRevenue: AddPoolRevenueDto) {
@@ -85,5 +85,3 @@ class PoolRevenueService {
       .limit(1);
   }
 }
-
-export default PoolRevenueService;

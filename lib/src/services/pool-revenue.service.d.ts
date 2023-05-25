@@ -25,7 +25,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { AddPoolRevenueDto, ListPoolRevenueRequestDto, ListPoolRevenueResponseDto } from "wemine-apis";
 /** CRUD operations for revenue metrics associated with miners. */
-declare class PoolRevenueService {
+export declare class PoolRevenueService {
     private poolRevenueModel;
     addPoolRevenue(poolRevenue: AddPoolRevenueDto): Promise<import("mongoose").Document<unknown, {}, import("wemine-apis").PoolRevenue & import("mongoose").Document<any, any, any>> & Omit<import("wemine-apis").PoolRevenue & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
@@ -34,5 +34,4 @@ declare class PoolRevenueService {
     private buildTimeRangeQuery;
     private buildTimeSingletonQuery;
 }
-export default PoolRevenueService;
 //# sourceMappingURL=pool-revenue.service.d.ts.map

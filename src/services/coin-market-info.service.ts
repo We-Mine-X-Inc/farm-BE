@@ -7,9 +7,9 @@ import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the CoinMarketInfo database resource.
  */
-class CoinMarketInfoService {
+export class CoinMarketInfoService {
   public coinMarketInfos = coinMarketInfoModel;
 
   public async findAllCoinMarketInfos(): Promise<CoinMarketInfo[]> {
@@ -105,5 +105,3 @@ class CoinMarketInfoService {
     return deleteCoinMarketInfoById;
   }
 }
-
-export default CoinMarketInfoService;

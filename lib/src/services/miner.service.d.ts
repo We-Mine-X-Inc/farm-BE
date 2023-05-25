@@ -26,9 +26,9 @@ import { CreateMinerDto } from "wemine-apis";
 import { Miner } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Miner database resource.
  */
-declare class MinerService {
+export declare class MinerService {
     miners: import("mongoose").Model<Miner & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Miner & import("mongoose").Document<any, any, any>> & Omit<Miner & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -39,5 +39,4 @@ declare class MinerService {
     updateMiner(minerId: Types.ObjectId, minerData: CreateMinerDto): Promise<Miner>;
     deleteMiner(minerId: Types.ObjectId): Promise<Miner>;
 }
-export default MinerService;
 //# sourceMappingURL=miner.service.d.ts.map

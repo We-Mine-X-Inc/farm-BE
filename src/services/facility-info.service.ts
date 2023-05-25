@@ -7,9 +7,9 @@ import { Types } from "mongoose";
 import { format as prettyFormat } from "pretty-format";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the FacilityInfo database resource.
  */
-class FacilityInfoService {
+export class FacilityInfoService {
   public facilityInfos = facilityInfoModel;
 
   public async findAllFacilityInfos(): Promise<FacilityInfo[]> {
@@ -104,5 +104,3 @@ class FacilityInfoService {
     return deleteFacilityInfoById;
   }
 }
-
-export default FacilityInfoService;

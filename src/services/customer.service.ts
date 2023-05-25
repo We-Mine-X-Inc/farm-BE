@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Customer database resource.
  */
-class CustomerService {
+export class CustomerService {
   public customers = customerModel;
 
   public async findAllCustomer(): Promise<Customer[]> {
@@ -88,5 +88,3 @@ class CustomerService {
     return deleteCustomerById;
   }
 }
-
-export default CustomerService;

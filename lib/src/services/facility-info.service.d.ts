@@ -26,9 +26,9 @@ import { CreateFacilityInfoDto } from "wemine-apis";
 import { FacilityInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the FacilityInfo database resource.
  */
-declare class FacilityInfoService {
+export declare class FacilityInfoService {
     facilityInfos: import("mongoose").Model<FacilityInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, FacilityInfo & import("mongoose").Document<any, any, any>> & Omit<FacilityInfo & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
     }, never>, any>;
@@ -38,5 +38,4 @@ declare class FacilityInfoService {
     updateFacilityInfo(facilityInfoId: Types.ObjectId, facilityInfoData: CreateFacilityInfoDto): Promise<FacilityInfo>;
     deleteFacilityInfo(facilityInfoId: Types.ObjectId): Promise<FacilityInfo>;
 }
-export default FacilityInfoService;
 //# sourceMappingURL=facility-info.service.d.ts.map

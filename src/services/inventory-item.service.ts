@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the InventoryItem database resource.
  */
-class InventoryItemService {
+export class InventoryItemService {
   public inventoryItems = inventoryItemModel;
 
   public async findAllInventoryItems(): Promise<InventoryItem[]> {
@@ -77,5 +77,3 @@ class InventoryItemService {
     return deleteInventoryItemById;
   }
 }
-
-export default InventoryItemService;

@@ -6,9 +6,9 @@ import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
 
 /**
- * Serves data from the DB based on the fetched/mutated information.
+ * Exposes operations allowable on the Miner database resource.
  */
-class MinerService {
+export class MinerService {
   public miners = minerModel;
 
   public async findAllMiners(): Promise<Miner[]> {
@@ -92,5 +92,3 @@ class MinerService {
     return deleteMinerById;
   }
 }
-
-export default MinerService;
