@@ -1,4 +1,4 @@
-import { CreateFacilityInfoDto } from "wemine-apis";
+import { CreateFacilityInfoReqeust } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { FacilityInfo } from "wemine-apis";
 import facilityInfoModel from "@models/facility-info.model";
@@ -35,7 +35,7 @@ export class FacilityInfoService {
   }
 
   public async createFacilityInfo(
-    facilityInfoData: CreateFacilityInfoDto
+    facilityInfoData: CreateFacilityInfoReqeust
   ): Promise<FacilityInfo> {
     if (isEmpty(facilityInfoData))
       throw new RpcException(400, "You're not facilityInfoData");
@@ -60,7 +60,7 @@ export class FacilityInfoService {
 
   public async updateFacilityInfo(
     facilityInfoId: Types.ObjectId,
-    facilityInfoData: CreateFacilityInfoDto
+    facilityInfoData: CreateFacilityInfoReqeust
   ): Promise<FacilityInfo> {
     // if (isEmpty(facilityInfoData))
     //   throw new RpcException(400, "You're not facilityInfoData");

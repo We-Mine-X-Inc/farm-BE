@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateSupplierQuoteDto } from "wemine-apis";
+import { CreateSupplierQuoteRequest } from "wemine-apis";
 import { SupplierQuote } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class SupplierQuoteService {
     }, never>, any>;
     findAllSupplierQuotes(): Promise<SupplierQuote[]>;
     findSupplierQuoteById(supplierQuoteId: Types.ObjectId): Promise<SupplierQuote>;
-    createSupplierQuote(supplierQuoteData: CreateSupplierQuoteDto): Promise<SupplierQuote>;
-    updateSupplierQuote(supplierQuoteId: Types.ObjectId, supplierQuoteData: CreateSupplierQuoteDto): Promise<SupplierQuote>;
+    createSupplierQuote(supplierQuoteData: CreateSupplierQuoteRequest): Promise<SupplierQuote>;
+    updateSupplierQuote(supplierQuoteId: Types.ObjectId, supplierQuoteData: CreateSupplierQuoteRequest): Promise<SupplierQuote>;
     deleteSupplierQuote(supplierQuoteId: Types.ObjectId): Promise<SupplierQuote>;
 }
 //# sourceMappingURL=supplier-quote.service.d.ts.map

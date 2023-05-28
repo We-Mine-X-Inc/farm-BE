@@ -21,8 +21,11 @@
 /// <reference types="mongoose/types/utility" />
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-declare const poolRevenueModel: import("mongoose").Model<any, unknown, unknown, unknown, any, any>;
-export default poolRevenueModel;
-//# sourceMappingURL=pool-revenue.model.d.ts.map
+import { MiningAccountRevenue } from "wemine-apis";
+import { Document } from "mongoose";
+declare const accountRevenueModel: import("mongoose").Model<MiningAccountRevenue & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MiningAccountRevenue & Document<any, any, any>> & Omit<MiningAccountRevenue & Document<any, any, any> & {
+    _id: import("mongoose").Types.ObjectId;
+}, never>, any>;
+export default accountRevenueModel;
+//# sourceMappingURL=account-revenue.model.d.ts.map

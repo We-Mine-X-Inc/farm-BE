@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateInventoryItemDto } from "wemine-apis";
+import { CreateInventoryItemReqeust } from "wemine-apis";
 import { InventoryItem } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class InventoryItemService {
     }, never>, any>;
     findAllInventoryItems(): Promise<InventoryItem[]>;
     findInventoryItemById(inventoryItemId: Types.ObjectId): Promise<InventoryItem>;
-    createInventoryItem(inventoryItemData: CreateInventoryItemDto): Promise<InventoryItem>;
-    updateInventoryItem(inventoryItemId: Types.ObjectId, inventoryItemData: CreateInventoryItemDto): Promise<InventoryItem>;
+    createInventoryItem(inventoryItemData: CreateInventoryItemReqeust): Promise<InventoryItem>;
+    updateInventoryItem(inventoryItemId: Types.ObjectId, inventoryItemData: CreateInventoryItemReqeust): Promise<InventoryItem>;
     deleteInventoryItem(inventoryItemId: Types.ObjectId): Promise<InventoryItem>;
 }
 //# sourceMappingURL=inventory-item.service.d.ts.map

@@ -1,4 +1,4 @@
-import { CreateCustomerDto } from "wemine-apis";
+import { CreateCustomerRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { Customer } from "wemine-apis";
 import customerModel from "@models/customer.model";
@@ -29,7 +29,7 @@ export class CustomerService {
   }
 
   public async createCustomer(
-    customerData: CreateCustomerDto
+    customerData: CreateCustomerRequest
   ): Promise<Customer> {
     if (isEmpty(customerData))
       throw new RpcException(400, "You're not customerData");
@@ -52,7 +52,7 @@ export class CustomerService {
 
   public async updateCustomer(
     customerId: Types.ObjectId,
-    customerData: CreateCustomerDto
+    customerData: CreateCustomerRequest
   ): Promise<Customer> {
     if (isEmpty(customerData))
       throw new RpcException(400, "You're not customerData");

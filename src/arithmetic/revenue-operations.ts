@@ -1,9 +1,9 @@
 import assert from "assert";
-import { CoinType, Revenue } from "wemine-apis";
+import { CoinType, EconomicValue } from "wemine-apis";
 
-const INCONGRUENT_COIN_TYPE_MSG = "Revenue coinTypes must be equal.";
+const INCONGRUENT_COIN_TYPE_MSG = "EconomicValue coinTypes must be equal.";
 
-export function revenueSum(augend: Revenue, addend: Revenue) {
+export function revenueSum(augend: EconomicValue, addend: EconomicValue) {
   assert(
     augend.coinType == addend.coinType,
     generateCoinTypeError(augend.coinType, addend.coinType)
@@ -14,7 +14,10 @@ export function revenueSum(augend: Revenue, addend: Revenue) {
   };
 }
 
-export function revenueDifference(minuend: Revenue, subtrahend: Revenue) {
+export function revenueDifference(
+  minuend: EconomicValue,
+  subtrahend: EconomicValue
+) {
   assert(
     minuend.coinType == subtrahend.coinType,
     generateCoinTypeError(minuend.coinType, subtrahend.coinType)
@@ -25,7 +28,10 @@ export function revenueDifference(minuend: Revenue, subtrahend: Revenue) {
   };
 }
 
-export function revenueDivision(dividend: Revenue, divisor: Revenue) {
+export function revenueDivision(
+  dividend: EconomicValue,
+  divisor: EconomicValue
+) {
   assert(
     dividend.coinType == divisor.coinType,
     generateCoinTypeError(dividend.coinType, divisor.coinType)

@@ -1,4 +1,4 @@
-import { CreateInventoryItemDto } from "wemine-apis";
+import { CreateInventoryItemReqeust } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { InventoryItem, INVENTORY_ITEM_FIELDS_TO_POPULATE } from "wemine-apis";
 import inventoryItemModel from "@models/inventory-item.model";
@@ -35,7 +35,7 @@ export class InventoryItemService {
   }
 
   public async createInventoryItem(
-    inventoryItemData: CreateInventoryItemDto
+    inventoryItemData: CreateInventoryItemReqeust
   ): Promise<InventoryItem> {
     if (isEmpty(inventoryItemData))
       throw new RpcException(400, "You're not inventoryItemData");
@@ -48,7 +48,7 @@ export class InventoryItemService {
 
   public async updateInventoryItem(
     inventoryItemId: Types.ObjectId,
-    inventoryItemData: CreateInventoryItemDto
+    inventoryItemData: CreateInventoryItemReqeust
   ): Promise<InventoryItem> {
     if (isEmpty(inventoryItemData))
       throw new RpcException(400, "You're not inventoryItemData");

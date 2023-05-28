@@ -1,4 +1,4 @@
-import { CreateCoinMarketInfoDto } from "wemine-apis";
+import { CreateCoinMarketInfoRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { CoinMarketInfo } from "wemine-apis";
 import coinMarketInfoModel from "@models/coin-market-info.model";
@@ -35,7 +35,7 @@ export class CoinMarketInfoService {
   }
 
   public async createCoinMarketInfo(
-    coinMarketInfoData: CreateCoinMarketInfoDto
+    coinMarketInfoData: CreateCoinMarketInfoRequest
   ): Promise<CoinMarketInfo> {
     if (isEmpty(coinMarketInfoData))
       throw new RpcException(400, "You're not coinMarketInfoData");
@@ -62,7 +62,7 @@ export class CoinMarketInfoService {
 
   public async updateCoinMarketInfo(
     coinMarketInfoId: Types.ObjectId,
-    coinMarketInfoData: CreateCoinMarketInfoDto
+    coinMarketInfoData: CreateCoinMarketInfoRequest
   ): Promise<CoinMarketInfo> {
     if (isEmpty(coinMarketInfoData))
       throw new RpcException(400, "You're not coinMarketInfoData");

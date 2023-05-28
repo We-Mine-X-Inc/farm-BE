@@ -1,4 +1,4 @@
-import { CreateContractDto, UpdateContractDto } from "wemine-apis";
+import { CreateContractRequest, UpdateContractRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { Contract, CONTRACT_FIELDS_TO_POPULATE } from "wemine-apis";
 import contractModel from "@models/contract.model";
@@ -57,7 +57,7 @@ export class ContractService {
   }
 
   public async createContract(
-    contractData: CreateContractDto
+    contractData: CreateContractRequest
   ): Promise<Contract> {
     if (isEmpty(contractData))
       throw new RpcException(400, "You're not contractData");
@@ -75,20 +75,22 @@ export class ContractService {
       );
 
     const createContractData = await this.contracts.create({
+      ...contractData,
       miner: contractData.miner,
-      ...contractData.initialFields,
     });
 
     return createContractData;
   }
 
-  public async updateContract(request: UpdateContractDto): Promise<Contract> {
+  public async updateContract(
+    request: UpdateContractRequest
+  ): Promise<Contract> {
     if (isEmpty(request))
       throw new RpcException(400, "You're not contractData");
 
     const updateContractById = await this.contracts.findByIdAndUpdate(
       request.contractId,
-      { ...request.mutatedFields }
+      { ...request }
     );
     if (!updateContractById) {
       throw new RpcException(409, "You're not contract");

@@ -1,42 +1,41 @@
 import {
-  AddPoolWorkerHashRateContributionDto,
+  AddPoolWorkerHashRateContributionRequest,
   ListPoolWorkerHashRateContributionRequestDto,
   ListPoolWorkerHashRateContributionResponseDto,
 } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import {
-  PoolWorkerHashRateContribution,
-  PoolWorkerHashRateContributionModel,
+  WorkerHashRateContribution,
+  WorkerHashRateContributionModel,
 } from "wemine-apis";
-import poolWorkerHashRateContributionModel from "@models/pool-worker-hash-rate-contribution.model";
+import workerHashRateContributionModel from "@/src/models/account-worker-hash-rate-contribution.model";
 import { isEmpty } from "@utils/util";
 
 /** CRUD operations for hash rate metrics for pool workers for a miner. */
-export class PoolWorkerHashRateContributionService {
-  private poolWorkerHashRateContributionModel =
-    poolWorkerHashRateContributionModel;
+export class WorkerHashRateContributionService {
+  private workerHashRateContributionModel = workerHashRateContributionModel;
 
   public async addWorkerHashRateContribution(
-    hashRateContribution: AddPoolWorkerHashRateContributionDto
+    hashRateContribution: AddPoolWorkerHashRateContributionRequest
   ) {
     if (isEmpty(hashRateContribution))
       throw new RpcException(
         400,
-        "You're not a AddPoolWorkerHashRateContributionDto"
+        "You're not a AddPoolWorkerHashRateContributionRequest"
       );
 
     const existingContributionRecord =
-      await this.poolWorkerHashRateContributionModel.find({
-        poolUsername: hashRateContribution.poolUsername,
+      await this.workerHashRateContributionModel.find({
+        accountAddress: hashRateContribution.accountAddress,
         timeRange: hashRateContribution.timeRange,
       });
     if (existingContributionRecord.length > 0) {
       throw new RpcException(400, "TimeRange for this pool already exists.");
     }
 
-    return await this.poolWorkerHashRateContributionModel
+    return await this.workerHashRateContributionModel
       .create({
-        poolUsername: hashRateContribution.poolUsername,
+        poolUsername: hashRateContribution.accountAddress,
         timeRange: hashRateContribution.timeRange,
         clientWorkers: JSON.stringify(hashRateContribution.clientWorkers),
         companyWorkers: JSON.stringify(hashRateContribution.companyWorkers),
@@ -55,12 +54,12 @@ export class PoolWorkerHashRateContributionService {
         "You're not a ListPoolWorkerHashRateContributionRequestDto"
       );
 
-    const poolWorkerContributions: PoolWorkerHashRateContributionModel[] =
-      await this.poolWorkerHashRateContributionModel.find({
+    const workerContributions: WorkerHashRateContributionModel[] =
+      await this.workerHashRateContributionModel.find({
         $or: [
           {
             // First timeRange if startInMillis lands in the middle a stored range.
-            poolUsername: { $in: request.poolUsernames },
+            poolUsername: { $in: request.accountAddresses },
             "timeRange.startInMillis": {
               $lte: request.timeRange?.startInMillis,
             },
@@ -68,7 +67,7 @@ export class PoolWorkerHashRateContributionService {
           },
           {
             // Middle timeRanges if any exist.
-            poolUsername: { $in: request.poolUsernames },
+            poolUsername: { $in: request.accountAddresses },
             "timeRange.startInMillis": {
               $gte: request.timeRange?.startInMillis,
             },
@@ -76,7 +75,7 @@ export class PoolWorkerHashRateContributionService {
           },
           {
             // Last timeRange if endInMillis lands in the middle a stored range.
-            poolUsername: { $in: request.poolUsernames },
+            poolUsername: { $in: request.accountAddresses },
             "timeRange.startInMillis": {
               $lte: request.timeRange?.endInMillis,
             },
@@ -86,19 +85,19 @@ export class PoolWorkerHashRateContributionService {
       });
 
     return {
-      poolWorkerContributions: poolWorkerContributions.map((model) =>
+      workerContributions: workerContributions.map((model) =>
         this.convertPoolWorkerHashRateContribution(model)
       ),
     };
   }
 
   private convertPoolWorkerHashRateContribution(
-    contributionModel: PoolWorkerHashRateContributionModel
-  ): PoolWorkerHashRateContribution {
+    contributionModel: WorkerHashRateContributionModel
+  ): WorkerHashRateContribution {
     return {
       _id: contributionModel._id,
       timeRange: contributionModel.timeRange,
-      poolUsername: contributionModel.poolUsername,
+      accountAddress: contributionModel.accountAddress,
       clientWorkers: JSON.parse(contributionModel.clientWorkers),
       companyWorkers: JSON.parse(contributionModel.companyWorkers),
     };

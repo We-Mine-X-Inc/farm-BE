@@ -1,4 +1,4 @@
-import { CreatePoolDto } from "wemine-apis";
+import { CreatePoolRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { POOL_FIELDS_TO_POPULATE, Pool } from "wemine-apis";
 import poolModel from "@models/pool.model";
@@ -29,7 +29,7 @@ export class PoolService {
     return findPool;
   }
 
-  public async createPool(poolData: CreatePoolDto): Promise<Pool> {
+  public async createPool(poolData: CreatePoolRequest): Promise<Pool> {
     if (isEmpty(poolData)) throw new RpcException(400, "You're not poolData");
 
     const findPool = await this.pools.findOne({

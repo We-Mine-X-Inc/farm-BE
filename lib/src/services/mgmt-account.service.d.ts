@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateMgmtAccountDto } from "wemine-apis";
+import { CreateMgmtAccountRequest } from "wemine-apis";
 import { MgmtAccount } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class MgmtAccountService {
     }, never>, any>;
     findAllMgmtAccount(): Promise<MgmtAccount[]>;
     findMgmtAccountById(mgmtAccountId: Types.ObjectId): Promise<MgmtAccount>;
-    createMgmtAccount(mgmtAccountData: CreateMgmtAccountDto): Promise<MgmtAccount>;
-    updateMgmtAccount(mgmtAccountId: Types.ObjectId, mgmtAccountData: CreateMgmtAccountDto): Promise<MgmtAccount>;
+    createMgmtAccount(mgmtAccountData: CreateMgmtAccountRequest): Promise<MgmtAccount>;
+    updateMgmtAccount(mgmtAccountId: Types.ObjectId, mgmtAccountData: CreateMgmtAccountRequest): Promise<MgmtAccount>;
     deleteMgmtAccount(mgmtAccountId: Types.ObjectId): Promise<MgmtAccount>;
 }
 //# sourceMappingURL=mgmt-account.service.d.ts.map

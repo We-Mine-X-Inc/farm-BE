@@ -21,8 +21,11 @@
 /// <reference types="mongoose/types/utility" />
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-declare const poolRevenueModel: import("mongoose").Model<any, unknown, unknown, unknown, any, any>;
-export default poolRevenueModel;
-//# sourceMappingURL=pool-revenue.model.d.ts.map
+import { WorkerHashRateContributionModel } from "wemine-apis";
+import { Document } from "mongoose";
+declare const workerHashRateContributionModel: import("mongoose").Model<WorkerHashRateContributionModel & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, WorkerHashRateContributionModel & Document<any, any, any>> & Omit<WorkerHashRateContributionModel & Document<any, any, any> & {
+    _id: import("mongoose").Types.ObjectId;
+}, never>, any>;
+export default workerHashRateContributionModel;
+//# sourceMappingURL=account-worker-hash-rate-contribution.model.d.ts.map

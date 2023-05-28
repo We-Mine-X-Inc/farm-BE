@@ -1,4 +1,4 @@
-import { CreateMinerMarketInfoDto } from "wemine-apis";
+import { CreateMinerMarketInfoRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import {
   MinerMarketInfo,
@@ -39,7 +39,7 @@ export class MinerMarketInfoService {
   }
 
   public async createMinerMarketInfo(
-    minerMarketInfoData: CreateMinerMarketInfoDto
+    minerMarketInfoData: CreateMinerMarketInfoRequest
   ): Promise<MinerMarketInfo> {
     if (isEmpty(minerMarketInfoData))
       throw new RpcException(400, "You're not minerMarketInfoData");
@@ -65,7 +65,7 @@ export class MinerMarketInfoService {
 
   public async updateMinerMarketInfo(
     minerMarketInfoId: Types.ObjectId,
-    minerMarketInfoData: CreateMinerMarketInfoDto
+    minerMarketInfoData: CreateMinerMarketInfoRequest
   ): Promise<MinerMarketInfo> {
     if (isEmpty(minerMarketInfoData))
       throw new RpcException(400, "You're not minerMarketInfoData");

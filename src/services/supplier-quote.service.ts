@@ -1,4 +1,4 @@
-import { CreateSupplierQuoteDto } from "wemine-apis";
+import { CreateSupplierQuoteRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { SupplierQuote } from "wemine-apis";
 import supplierQuoteModel from "@models/supplier-quote.model";
@@ -34,7 +34,7 @@ export class SupplierQuoteService {
   }
 
   public async createSupplierQuote(
-    supplierQuoteData: CreateSupplierQuoteDto
+    supplierQuoteData: CreateSupplierQuoteRequest
   ): Promise<SupplierQuote> {
     if (isEmpty(supplierQuoteData))
       throw new RpcException(400, "You're not supplierQuoteData");
@@ -47,7 +47,7 @@ export class SupplierQuoteService {
 
   public async updateSupplierQuote(
     supplierQuoteId: Types.ObjectId,
-    supplierQuoteData: CreateSupplierQuoteDto
+    supplierQuoteData: CreateSupplierQuoteRequest
   ): Promise<SupplierQuote> {
     if (isEmpty(supplierQuoteData))
       throw new RpcException(400, "You're not supplierQuoteData");

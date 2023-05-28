@@ -1,4 +1,4 @@
-import { CreateUptimeTickDto } from "wemine-apis";
+import { CreateUptimeTickRequest } from "wemine-apis";
 import { UptimeTick } from "wemine-apis";
 import uptimeTickModel from "@models/uptime-tick.model";
 import { isEmpty } from "@utils/util";
@@ -18,7 +18,7 @@ export class UptimeTickService {
   }
 
   public async createUptimeTick(
-    uptimeTickData: CreateUptimeTickDto
+    uptimeTickData: CreateUptimeTickRequest
   ): Promise<UptimeTick> {
     // Make more graceful by logging this error and configuring a corresponding alert.
     if (isEmpty(uptimeTickData)) throw new Error("Requires uptick data.");

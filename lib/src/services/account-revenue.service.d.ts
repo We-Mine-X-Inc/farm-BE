@@ -23,6 +23,15 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-declare const poolRevenueModel: import("mongoose").Model<any, unknown, unknown, unknown, any, any>;
-export default poolRevenueModel;
-//# sourceMappingURL=pool-revenue.model.d.ts.map
+import { AddMiningAccountRevenueRequest, ListMiningAccountRevenueRequest, ListMiningAccountRevenueResponse } from "wemine-apis";
+/** CRUD operations for revenue metrics associated with miners. */
+export declare class AccountRevenueService {
+    private accountRevenueModel;
+    addAccountRevenue(request: AddMiningAccountRevenueRequest): Promise<import("mongoose").Document<unknown, {}, import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any>> & Omit<import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any> & {
+        _id: import("mongoose").Types.ObjectId;
+    }, never>>;
+    getAccountRevenues(request: ListMiningAccountRevenueRequest): Promise<ListMiningAccountRevenueResponse>;
+    private buildTimeRangeQuery;
+    private buildTimeSingletonQuery;
+}
+//# sourceMappingURL=account-revenue.service.d.ts.map

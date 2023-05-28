@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateMinerMarketInfoDto } from "wemine-apis";
+import { CreateMinerMarketInfoRequest } from "wemine-apis";
 import { MinerMarketInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class MinerMarketInfoService {
     }, never>, any>;
     findAllMinerMarketInfos(): Promise<MinerMarketInfo[]>;
     findMinerMarketInfoById(minerMarketInfoId: Types.ObjectId): Promise<MinerMarketInfo>;
-    createMinerMarketInfo(minerMarketInfoData: CreateMinerMarketInfoDto): Promise<MinerMarketInfo>;
-    updateMinerMarketInfo(minerMarketInfoId: Types.ObjectId, minerMarketInfoData: CreateMinerMarketInfoDto): Promise<MinerMarketInfo>;
+    createMinerMarketInfo(minerMarketInfoData: CreateMinerMarketInfoRequest): Promise<MinerMarketInfo>;
+    updateMinerMarketInfo(minerMarketInfoId: Types.ObjectId, minerMarketInfoData: CreateMinerMarketInfoRequest): Promise<MinerMarketInfo>;
     deleteMinerMarketInfo(minerMarketInfoId: Types.ObjectId): Promise<MinerMarketInfo>;
 }
 //# sourceMappingURL=miner-market-info.service.d.ts.map

@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateFacilityInfoDto } from "wemine-apis";
+import { CreateFacilityInfoReqeust } from "wemine-apis";
 import { FacilityInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class FacilityInfoService {
     }, never>, any>;
     findAllFacilityInfos(): Promise<FacilityInfo[]>;
     findFacilityInfoById(facilityInfoId: Types.ObjectId): Promise<FacilityInfo>;
-    createFacilityInfo(facilityInfoData: CreateFacilityInfoDto): Promise<FacilityInfo>;
-    updateFacilityInfo(facilityInfoId: Types.ObjectId, facilityInfoData: CreateFacilityInfoDto): Promise<FacilityInfo>;
+    createFacilityInfo(facilityInfoData: CreateFacilityInfoReqeust): Promise<FacilityInfo>;
+    updateFacilityInfo(facilityInfoId: Types.ObjectId, facilityInfoData: CreateFacilityInfoReqeust): Promise<FacilityInfo>;
     deleteFacilityInfo(facilityInfoId: Types.ObjectId): Promise<FacilityInfo>;
 }
 //# sourceMappingURL=facility-info.service.d.ts.map

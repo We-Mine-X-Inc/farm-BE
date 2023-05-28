@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateCoinMarketInfoDto } from "wemine-apis";
+import { CreateCoinMarketInfoRequest } from "wemine-apis";
 import { CoinMarketInfo } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class CoinMarketInfoService {
     }, never>, any>;
     findAllCoinMarketInfos(): Promise<CoinMarketInfo[]>;
     findCoinMarketInfoById(coinMarketInfoId: Types.ObjectId): Promise<CoinMarketInfo>;
-    createCoinMarketInfo(coinMarketInfoData: CreateCoinMarketInfoDto): Promise<CoinMarketInfo>;
-    updateCoinMarketInfo(coinMarketInfoId: Types.ObjectId, coinMarketInfoData: CreateCoinMarketInfoDto): Promise<CoinMarketInfo>;
+    createCoinMarketInfo(coinMarketInfoData: CreateCoinMarketInfoRequest): Promise<CoinMarketInfo>;
+    updateCoinMarketInfo(coinMarketInfoId: Types.ObjectId, coinMarketInfoData: CreateCoinMarketInfoRequest): Promise<CoinMarketInfo>;
     deleteCoinMarketInfo(coinMarketInfoId: Types.ObjectId): Promise<CoinMarketInfo>;
 }
 //# sourceMappingURL=coin-market-info.service.d.ts.map

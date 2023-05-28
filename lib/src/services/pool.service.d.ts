@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreatePoolDto } from "wemine-apis";
+import { CreatePoolRequest } from "wemine-apis";
 import { Pool } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,7 +34,7 @@ export declare class PoolService {
     }, never>, any>;
     findAllPools(): Promise<Pool[]>;
     findPoolById(poolId: Types.ObjectId): Promise<Pool>;
-    createPool(poolData: CreatePoolDto): Promise<Pool>;
+    createPool(poolData: CreatePoolRequest): Promise<Pool>;
     deletePool(poolId: Types.ObjectId): Promise<Pool>;
 }
 //# sourceMappingURL=pool.service.d.ts.map

@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateContractDto, UpdateContractDto } from "wemine-apis";
+import { CreateContractRequest, UpdateContractRequest } from "wemine-apis";
 import { Contract } from "wemine-apis";
 import { Types } from "mongoose";
 export type GetContractRequest = {
@@ -38,8 +38,8 @@ export declare class ContractService {
     findAllContracts(): Promise<Contract[]>;
     findContractById(contractId: Types.ObjectId): Promise<Contract>;
     findContractByMiner(request: GetContractRequest): Promise<Contract>;
-    createContract(contractData: CreateContractDto): Promise<Contract>;
-    updateContract(request: UpdateContractDto): Promise<Contract>;
+    createContract(contractData: CreateContractRequest): Promise<Contract>;
+    updateContract(request: UpdateContractRequest): Promise<Contract>;
     deleteContract(contractId: Types.ObjectId): Promise<Contract>;
 }
 //# sourceMappingURL=contract.service.d.ts.map

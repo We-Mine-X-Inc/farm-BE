@@ -1,52 +1,58 @@
 import {
-  AddPoolRevenueDto,
-  ListPoolRevenueRequestDto,
-  ListPoolRevenueResponseDto,
+  AddMiningAccountRevenueRequest,
+  ListMiningAccountRevenueRequest,
+  ListMiningAccountRevenueResponse,
 } from "wemine-apis";
 import { RpcException } from "wemine-apis";
-import poolRevenueModel from "@models/pool-revenue.model";
+import accountRevenueModel from "@/src/models/account-revenue.model";
 import { isEmpty } from "@utils/util";
 import { format as prettyFormat } from "pretty-format";
 
 /** CRUD operations for revenue metrics associated with miners. */
-export class PoolRevenueService {
-  private poolRevenueModel = poolRevenueModel;
+export class AccountRevenueService {
+  private accountRevenueModel = accountRevenueModel;
 
-  public async addPoolRevenue(poolRevenue: AddPoolRevenueDto) {
-    if (isEmpty(poolRevenue))
-      throw new RpcException(400, "You're not a AddPoolRevenueDto");
+  public async addAccountRevenue(request: AddMiningAccountRevenueRequest) {
+    if (isEmpty(request))
+      throw new RpcException(
+        400,
+        "You're not a AddMiningAccountRevenueRequest"
+      );
 
-    return await this.poolRevenueModel.create({
-      poolUsername: poolRevenue.poolUsername,
-      timeRange: poolRevenue.timeRange,
-      cummulativeProfits: poolRevenue.cummulativeProfits,
+    return await this.accountRevenueModel.create({
+      miningAccountUsername: request.accountAddress,
+      timeRange: request.timeRange,
+      cummulativeProfits: request.cummulativeProfits,
     });
   }
 
-  public async getPoolRevenues(
-    request: ListPoolRevenueRequestDto
-  ): Promise<ListPoolRevenueResponseDto> {
+  public async getAccountRevenues(
+    request: ListMiningAccountRevenueRequest
+  ): Promise<ListMiningAccountRevenueResponse> {
     if (isEmpty(request))
-      throw new RpcException(400, "You're not a AddPoolRevenueDto");
+      throw new RpcException(
+        400,
+        "You're not a AddMiningAccountRevenueRequest"
+      );
 
     const specifiedTime = request.timeRange || request.timeSingleton;
     if (!specifiedTime) throw new RpcException(400, "Must specify time.");
 
-    const poolRevenuesPromise = !!request.timeRange
+    const accountRevenuesPromise = !!request.timeRange
       ? this.buildTimeRangeQuery(request)
       : this.buildTimeSingletonQuery(request);
-    const poolRevenues = await poolRevenuesPromise;
+    const accountRevenues = await accountRevenuesPromise;
 
-    console.log(prettyFormat(poolRevenues));
-    return { poolRevenues };
+    console.log(prettyFormat(accountRevenues));
+    return { accountRevenues };
   }
 
-  private buildTimeRangeQuery(request: ListPoolRevenueRequestDto) {
-    return this.poolRevenueModel.find({
+  private buildTimeRangeQuery(request: ListMiningAccountRevenueRequest) {
+    return this.accountRevenueModel.find({
       $or: [
         {
           // First timeRange if startInMillis lands in the middle a stored range.
-          poolUsername: { $in: request.poolUsernames },
+          poolUsername: { $in: request.accountAddresses },
           "timeRange.startInMillis": {
             $lte: request.timeRange?.startInMillis,
           },
@@ -54,7 +60,7 @@ export class PoolRevenueService {
         },
         {
           // Middle timeRanges if any exist.
-          poolUsername: { $in: request.poolUsernames },
+          poolUsername: { $in: request.accountAddresses },
           "timeRange.startInMillis": {
             $gte: request.timeRange?.startInMillis,
           },
@@ -62,7 +68,7 @@ export class PoolRevenueService {
         },
         {
           // Last timeRange if endInMillis lands in the middle a stored range.
-          poolUsername: { $in: request.poolUsernames },
+          poolUsername: { $in: request.accountAddresses },
           "timeRange.startInMillis": {
             $lte: request.timeRange?.endInMillis,
           },
@@ -72,10 +78,10 @@ export class PoolRevenueService {
     });
   }
 
-  private buildTimeSingletonQuery(request: ListPoolRevenueRequestDto) {
-    return this.poolRevenueModel
+  private buildTimeSingletonQuery(request: ListMiningAccountRevenueRequest) {
+    return this.accountRevenueModel
       .find({
-        poolUsername: { $in: request.poolUsernames },
+        poolUsername: { $in: request.accountAddresses },
         "timeRange.startInMillis": {
           $lte: request.timeSingleton?.timeInMillis,
         },

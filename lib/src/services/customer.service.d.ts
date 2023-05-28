@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateCustomerDto } from "wemine-apis";
+import { CreateCustomerRequest } from "wemine-apis";
 import { Customer } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -34,8 +34,8 @@ export declare class CustomerService {
     }, never>, any>;
     findAllCustomer(): Promise<Customer[]>;
     findCustomerById(customerId: Types.ObjectId): Promise<Customer>;
-    createCustomer(customerData: CreateCustomerDto): Promise<Customer>;
-    updateCustomer(customerId: Types.ObjectId, customerData: CreateCustomerDto): Promise<Customer>;
+    createCustomer(customerData: CreateCustomerRequest): Promise<Customer>;
+    updateCustomer(customerId: Types.ObjectId, customerData: CreateCustomerRequest): Promise<Customer>;
     deleteCustomer(customerId: Types.ObjectId): Promise<Customer>;
 }
 //# sourceMappingURL=customer.service.d.ts.map

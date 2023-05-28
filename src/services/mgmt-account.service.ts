@@ -1,4 +1,4 @@
-import { CreateMgmtAccountDto } from "wemine-apis";
+import { CreateMgmtAccountRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { MgmtAccount } from "wemine-apis";
 import mgmtAccountModel from "@models/mgmt-account.model";
@@ -31,7 +31,7 @@ export class MgmtAccountService {
   }
 
   public async createMgmtAccount(
-    mgmtAccountData: CreateMgmtAccountDto
+    mgmtAccountData: CreateMgmtAccountRequest
   ): Promise<MgmtAccount> {
     if (isEmpty(mgmtAccountData))
       throw new RpcException(400, "You're not mgmtAccountData");
@@ -54,7 +54,7 @@ export class MgmtAccountService {
 
   public async updateMgmtAccount(
     mgmtAccountId: Types.ObjectId,
-    mgmtAccountData: CreateMgmtAccountDto
+    mgmtAccountData: CreateMgmtAccountRequest
   ): Promise<MgmtAccount> {
     if (isEmpty(mgmtAccountData))
       throw new RpcException(400, "You're not mgmtAccountData");

@@ -23,7 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateUptimeTickDto } from "wemine-apis";
+import { CreateUptimeTickRequest } from "wemine-apis";
 import { UptimeTick } from "wemine-apis";
 /**
  * Exposes operations allowable on the UptimeTick database resource.
@@ -34,7 +34,7 @@ export declare class UptimeTickService {
     }, never>, any>;
     findAllTicks(): Promise<UptimeTick[]>;
     findMostRecentTick(): Promise<UptimeTick | null>;
-    createUptimeTick(uptimeTickData: CreateUptimeTickDto): Promise<UptimeTick>;
+    createUptimeTick(uptimeTickData: CreateUptimeTickRequest): Promise<UptimeTick>;
     deleteAll(thresholdDate: Date): Promise<Number>;
 }
 //# sourceMappingURL=uptime-tick.service.d.ts.map
