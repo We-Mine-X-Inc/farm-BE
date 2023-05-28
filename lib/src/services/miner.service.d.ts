@@ -36,7 +36,7 @@ export declare class MinerService {
     findMinerByFriendlyId(friendlyMinerId: string): Promise<Miner>;
     findMinerById(minerId: Types.ObjectId): Promise<Miner>;
     createMiner(minerData: CreateMinerRequest): Promise<Miner>;
-    updateMiner(minerId: Types.ObjectId, minerData: UpdateMinerRequest): Promise<Miner>;
+    updateMiner(minerData: UpdateMinerRequest): Promise<Miner>;
     deleteMiner(minerId: Types.ObjectId): Promise<Miner>;
 }
 //# sourceMappingURL=miner.service.d.ts.map

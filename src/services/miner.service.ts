@@ -60,15 +60,15 @@ export class MinerService {
     return createMinerData;
   }
 
-  public async updateMiner(
-    minerId: Types.ObjectId,
-    minerData: UpdateMinerRequest
-  ): Promise<Miner> {
+  public async updateMiner(minerData: UpdateMinerRequest): Promise<Miner> {
     if (isEmpty(minerData)) throw new RpcException(400, "You're not minerData");
 
-    const updateMinerById = await this.miners.findByIdAndUpdate(minerId, {
-      ...minerData,
-    });
+    const updateMinerById = await this.miners.findByIdAndUpdate(
+      minerData.minerId,
+      {
+        ...minerData,
+      }
+    );
     if (!updateMinerById) throw new RpcException(409, "You're not miner.");
 
     return updateMinerById;
