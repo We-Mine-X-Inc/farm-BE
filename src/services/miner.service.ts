@@ -1,4 +1,4 @@
-import { CreateMinerRequest } from "wemine-apis";
+import { CreateMinerRequest, UpdateMinerRequest } from "wemine-apis";
 import { RpcException } from "wemine-apis";
 import { Miner, MINER_FILEDS_TO_POPULATE } from "wemine-apis";
 import minerModel from "@models/miner.model";
@@ -62,20 +62,9 @@ export class MinerService {
 
   public async updateMiner(
     minerId: Types.ObjectId,
-    minerData: CreateMinerRequest
+    minerData: UpdateMinerRequest
   ): Promise<Miner> {
     if (isEmpty(minerData)) throw new RpcException(400, "You're not minerData");
-
-    if (minerData.macAddress) {
-      const findMiner = await this.miners.findOne({
-        macAddress: minerData.macAddress,
-      });
-      if (findMiner && !findMiner._id.equals(minerId))
-        throw new RpcException(
-          409,
-          `You're MAC Address ${minerData.macAddress} already exists.`
-        );
-    }
 
     const updateMinerById = await this.miners.findByIdAndUpdate(minerId, {
       ...minerData,

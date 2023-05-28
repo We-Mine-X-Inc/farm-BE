@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateMinerRequest } from "wemine-apis";
+import { CreateMinerRequest, UpdateMinerRequest } from "wemine-apis";
 import { Miner } from "wemine-apis";
 import { Types } from "mongoose";
 /**
@@ -36,7 +36,7 @@ export declare class MinerService {
     findMinerByFriendlyId(friendlyMinerId: string): Promise<Miner>;
     findMinerById(minerId: Types.ObjectId): Promise<Miner>;
     createMiner(minerData: CreateMinerRequest): Promise<Miner>;
-    updateMiner(minerId: Types.ObjectId, minerData: CreateMinerRequest): Promise<Miner>;
+    updateMiner(minerId: Types.ObjectId, minerData: UpdateMinerRequest): Promise<Miner>;
     deleteMiner(minerId: Types.ObjectId): Promise<Miner>;
 }
 //# sourceMappingURL=miner.service.d.ts.map
