@@ -24,12 +24,9 @@ export class ContractService {
   }
 
   public async findContractById(contractId: Types.ObjectId): Promise<Contract> {
-    console.log("findByContractId");
-    console.log(contractId);
     if (isEmpty(contractId))
       throw new RpcException(400, "You're not contractId");
 
-    console.log("right before findOne");
     const findContract = await this.contracts
       .findOne({ _id: contractId })
       .populate(CONTRACT_FIELDS_TO_POPULATE);
