@@ -17,7 +17,7 @@ export class CustomerService {
   }
 
   public async findCustomerById(customerId: Types.ObjectId): Promise<Customer> {
-    if (isEmpty(customerId))
+    if (Types.ObjectId.isValid(customerId))
       throw new RpcException(400, "You're not customerId");
 
     const findCustomer = await this.customers.findOne({

@@ -21,7 +21,7 @@ export class SupplierQuoteService {
   public async findSupplierQuoteById(
     supplierQuoteId: Types.ObjectId
   ): Promise<SupplierQuote> {
-    if (isEmpty(supplierQuoteId))
+    if (Types.ObjectId.isValid(supplierQuoteId))
       throw new RpcException(400, "You're not supplierQuoteId");
 
     const findSupplierQuote = await this.supplierQuotes.findOne({

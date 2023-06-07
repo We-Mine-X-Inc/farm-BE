@@ -21,7 +21,7 @@ export class InventoryItemService {
   public async findInventoryItemById(
     inventoryItemId: Types.ObjectId
   ): Promise<InventoryItem> {
-    if (isEmpty(inventoryItemId))
+    if (Types.ObjectId.isValid(inventoryItemId))
       throw new RpcException(400, "You're not inventoryItemId");
 
     const findInventoryItem = await this.inventoryItems

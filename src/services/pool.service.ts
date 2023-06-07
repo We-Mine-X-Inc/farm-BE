@@ -19,7 +19,8 @@ export class PoolService {
   }
 
   public async findPoolById(poolId: Types.ObjectId): Promise<Pool> {
-    if (isEmpty(poolId)) throw new RpcException(400, "You're not poolId");
+    if (Types.ObjectId.isValid(poolId))
+      throw new RpcException(400, "You're not poolId");
 
     const findPool = await this.pools
       .findOne({ _id: poolId })

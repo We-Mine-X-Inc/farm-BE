@@ -22,7 +22,7 @@ export class CoinMarketInfoService {
   public async findCoinMarketInfoById(
     coinMarketInfoId: Types.ObjectId
   ): Promise<CoinMarketInfo> {
-    if (isEmpty(coinMarketInfoId))
+    if (Types.ObjectId.isValid(coinMarketInfoId))
       throw new RpcException(400, "You're not coinMarketInfoId");
 
     const findCoinMarketInfo = await this.coinMarketInfos.findOne({
@@ -96,6 +96,9 @@ export class CoinMarketInfoService {
   public async deleteCoinMarketInfo(
     coinMarketInfoId: Types.ObjectId
   ): Promise<CoinMarketInfo> {
+    if (Types.ObjectId.isValid(coinMarketInfoId))
+      throw new RpcException(400, "You're not coinMarketInfoId");
+
     const deleteCoinMarketInfoById =
       await this.coinMarketInfos.findByIdAndDelete(coinMarketInfoId);
     if (!deleteCoinMarketInfoById) {

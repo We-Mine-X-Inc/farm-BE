@@ -25,7 +25,7 @@ export class MinerMarketInfoService {
   public async findMinerMarketInfoById(
     minerMarketInfoId: Types.ObjectId
   ): Promise<MinerMarketInfo> {
-    if (isEmpty(minerMarketInfoId))
+    if (Types.ObjectId.isValid(minerMarketInfoId))
       throw new RpcException(400, "You're not minerMarketInfoId");
 
     const findMinerMarketInfo = await await this.minerMarketInfos

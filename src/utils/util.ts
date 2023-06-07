@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 /**
  * @method isEmpty
  * @param {String | Number | Object} value
@@ -13,8 +11,6 @@ export const isEmpty = (value: string | number | object): boolean => {
     return true;
   } else if (typeof value === "undefined" || value === undefined) {
     return true;
-  } else if (value !== null && value instanceof Types.ObjectId) {
-    return false;
   } else if (
     value !== null &&
     typeof value === "object" &&

@@ -24,7 +24,7 @@ export class ContractService {
   }
 
   public async findContractById(contractId: Types.ObjectId): Promise<Contract> {
-    if (isEmpty(contractId))
+    if (Types.ObjectId.isValid(contractId))
       throw new RpcException(400, "You're not contractId");
 
     const findContract = await this.contracts
@@ -100,6 +100,9 @@ export class ContractService {
   }
 
   public async deleteContract(contractId: Types.ObjectId): Promise<Contract> {
+    if (!Types.ObjectId.isValid(contractId))
+      throw new RpcException(400, `You're not contractId: ${contractId}`);
+
     const deleteContractById = await this.contracts.findByIdAndDelete(
       contractId
     );
