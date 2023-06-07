@@ -19,9 +19,6 @@ export class MgmtAccountService {
   public async findMgmtAccountById(
     mgmtAccountId: Types.ObjectId
   ): Promise<MgmtAccount> {
-    if (Types.ObjectId.isValid(mgmtAccountId))
-      throw new RpcException(400, "You're not mgmtAccountId");
-
     const findMgmtAccount = await this.mgmtAccounts.findOne({
       _id: mgmtAccountId,
     });

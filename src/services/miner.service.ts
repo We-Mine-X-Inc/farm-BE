@@ -32,9 +32,6 @@ export class MinerService {
   }
 
   public async findMinerById(minerId: Types.ObjectId): Promise<Miner> {
-    if (Types.ObjectId.isValid(minerId))
-      throw new RpcException(400, "You're not minerId");
-
     const findMiner = await this.miners
       .findOne({ _id: minerId })
       .populate(MINER_FILEDS_TO_POPULATE);

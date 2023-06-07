@@ -19,9 +19,6 @@ export class PoolService {
   }
 
   public async findPoolById(poolId: Types.ObjectId): Promise<Pool> {
-    if (Types.ObjectId.isValid(poolId))
-      throw new RpcException(400, "You're not poolId");
-
     const findPool = await this.pools
       .findOne({ _id: poolId })
       .populate(POOL_FIELDS_TO_POPULATE);

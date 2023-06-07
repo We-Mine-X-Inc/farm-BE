@@ -24,9 +24,6 @@ export class ContractService {
   }
 
   public async findContractById(contractId: Types.ObjectId): Promise<Contract> {
-    if (Types.ObjectId.isValid(contractId))
-      throw new RpcException(400, "You're not contractId");
-
     const findContract = await this.contracts
       .findOne({ _id: contractId })
       .populate(CONTRACT_FIELDS_TO_POPULATE);
@@ -100,9 +97,6 @@ export class ContractService {
   }
 
   public async deleteContract(contractId: Types.ObjectId): Promise<Contract> {
-    if (!Types.ObjectId.isValid(contractId))
-      throw new RpcException(400, `You're not contractId: ${contractId}`);
-
     const deleteContractById = await this.contracts.findByIdAndDelete(
       contractId
     );

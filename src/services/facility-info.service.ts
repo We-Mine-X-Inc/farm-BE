@@ -22,9 +22,6 @@ export class FacilityInfoService {
   public async findFacilityInfoById(
     facilityInfoId: Types.ObjectId
   ): Promise<FacilityInfo> {
-    if (Types.ObjectId.isValid(facilityInfoId))
-      throw new RpcException(400, "You're not facilityInfoId");
-
     const findFacilityInfo = await this.facilityInfos.findOne({
       _id: facilityInfoId,
     });

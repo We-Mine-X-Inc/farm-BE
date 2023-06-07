@@ -25,9 +25,6 @@ export class MinerMarketInfoService {
   public async findMinerMarketInfoById(
     minerMarketInfoId: Types.ObjectId
   ): Promise<MinerMarketInfo> {
-    if (Types.ObjectId.isValid(minerMarketInfoId))
-      throw new RpcException(400, "You're not minerMarketInfoId");
-
     const findMinerMarketInfo = await await this.minerMarketInfos
       .findOne({ _id: minerMarketInfoId })
       .populate(MINER_MARKET_INFO_FIELDS_TO_POPULATE);

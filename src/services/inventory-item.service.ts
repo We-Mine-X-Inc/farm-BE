@@ -21,9 +21,6 @@ export class InventoryItemService {
   public async findInventoryItemById(
     inventoryItemId: Types.ObjectId
   ): Promise<InventoryItem> {
-    if (Types.ObjectId.isValid(inventoryItemId))
-      throw new RpcException(400, "You're not inventoryItemId");
-
     const findInventoryItem = await this.inventoryItems
       .findOne({ _id: inventoryItemId })
       .populate(INVENTORY_ITEM_FIELDS_TO_POPULATE);
