@@ -22,7 +22,7 @@ export class CoinMarketInfoService {
   public async findCoinMarketInfoById(
     coinMarketInfoId: Types.ObjectId
   ): Promise<CoinMarketInfo> {
-    if (isEmpty(coinMarketInfoId._id.id))
+    if (isEmpty(coinMarketInfoId))
       throw new RpcException(400, "You're not coinMarketInfoId");
 
     const findCoinMarketInfo = await this.coinMarketInfos.findOne({

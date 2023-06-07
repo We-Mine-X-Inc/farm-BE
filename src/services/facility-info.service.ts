@@ -22,7 +22,7 @@ export class FacilityInfoService {
   public async findFacilityInfoById(
     facilityInfoId: Types.ObjectId
   ): Promise<FacilityInfo> {
-    if (isEmpty(facilityInfoId._id.id))
+    if (isEmpty(facilityInfoId))
       throw new RpcException(400, "You're not facilityInfoId");
 
     const findFacilityInfo = await this.facilityInfos.findOne({

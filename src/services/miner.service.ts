@@ -32,7 +32,7 @@ export class MinerService {
   }
 
   public async findMinerById(minerId: Types.ObjectId): Promise<Miner> {
-    if (isEmpty(minerId.id)) throw new RpcException(400, "You're not minerId");
+    if (isEmpty(minerId)) throw new RpcException(400, "You're not minerId");
 
     const findMiner = await this.miners
       .findOne({ _id: minerId })
