@@ -1,6 +1,7 @@
 export * from "./coin-market-info.service";
 export * from "./contract.service";
 export * from "./customer.service";
+export * from "./google-oauth-info.service";
 export * from "./facility-info.service";
 export * from "./inventory-item.service";
 export * from "./mgmt-account.service";
