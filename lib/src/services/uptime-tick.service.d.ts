@@ -29,9 +29,9 @@ import { UptimeTick } from "wemine-apis";
  * Exposes operations allowable on the UptimeTick database resource.
  */
 export declare class UptimeTickService {
-    uptimeTicks: import("mongoose").Model<UptimeTick & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, UptimeTick & import("mongoose").Document<any, any, any>> & Omit<UptimeTick & import("mongoose").Document<any, any, any> & {
+    uptimeTicks: import("mongoose").Model<UptimeTick & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, UptimeTick & import("mongoose").Document<any, any, any>> & UptimeTick & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllTicks(): Promise<UptimeTick[]>;
     findMostRecentTick(): Promise<UptimeTick | null>;
     createUptimeTick(uptimeTickData: CreateUptimeTickRequest): Promise<UptimeTick>;

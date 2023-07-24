@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { FacilityInfo } from "wemine-apis";
-declare const facilityInfoModel: import("mongoose").Model<FacilityInfo & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, FacilityInfo & Document<any, any, any>> & Omit<FacilityInfo & Document<any, any, any> & {
+declare const facilityInfoModel: import("mongoose").Model<FacilityInfo & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, FacilityInfo & Document<any, any, any>> & FacilityInfo & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default facilityInfoModel;
 //# sourceMappingURL=facility-info.model.d.ts.map

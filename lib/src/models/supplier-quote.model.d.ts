@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { SupplierQuote } from "wemine-apis";
-declare const supplierQuoteModel: import("mongoose").Model<SupplierQuote & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, SupplierQuote & Document<any, any, any>> & Omit<SupplierQuote & Document<any, any, any> & {
+declare const supplierQuoteModel: import("mongoose").Model<SupplierQuote & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, SupplierQuote & Document<any, any, any>> & SupplierQuote & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default supplierQuoteModel;
 //# sourceMappingURL=supplier-quote.model.d.ts.map

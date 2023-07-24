@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { MiningAccountRevenue } from "wemine-apis";
 import { Document } from "mongoose";
-declare const accountRevenueModel: import("mongoose").Model<MiningAccountRevenue & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MiningAccountRevenue & Document<any, any, any>> & Omit<MiningAccountRevenue & Document<any, any, any> & {
+declare const accountRevenueModel: import("mongoose").Model<MiningAccountRevenue & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MiningAccountRevenue & Document<any, any, any>> & MiningAccountRevenue & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default accountRevenueModel;
 //# sourceMappingURL=account-revenue.model.d.ts.map

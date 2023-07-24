@@ -27,9 +27,9 @@ import { AddMiningAccountRevenueRequest, ListMiningAccountRevenueRequest, ListMi
 /** CRUD operations for revenue metrics associated with miners. */
 export declare class AccountRevenueService {
     private accountRevenueModel;
-    addAccountRevenue(request: AddMiningAccountRevenueRequest): Promise<import("mongoose").Document<unknown, {}, import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any>> & Omit<import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any> & {
+    addAccountRevenue(request: AddMiningAccountRevenueRequest): Promise<import("mongoose").Document<unknown, {}, import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any>> & import("wemine-apis").MiningAccountRevenue & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }, never>>;
+    }>;
     getAccountRevenues(request: ListMiningAccountRevenueRequest): Promise<ListMiningAccountRevenueResponse>;
     private buildTimeRangeQuery;
     private buildTimeSingletonQuery;

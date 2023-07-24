@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Contract } from "wemine-apis";
 import { Document, Types } from "mongoose";
-declare const contractModel: import("mongoose").Model<Contract & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Contract & Document<any, any, any>> & Omit<Contract & Document<any, any, any> & {
+declare const contractModel: import("mongoose").Model<Contract & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Contract & Document<any, any, any>> & Contract & Document<any, any, any> & {
     _id: Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default contractModel;
 //# sourceMappingURL=contract.model.d.ts.map

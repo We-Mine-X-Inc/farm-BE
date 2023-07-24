@@ -29,9 +29,9 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the MinerMarketInfo database resource.
  */
 export declare class MinerMarketInfoService {
-    minerMarketInfos: import("mongoose").Model<MinerMarketInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, MinerMarketInfo & import("mongoose").Document<any, any, any>> & Omit<MinerMarketInfo & import("mongoose").Document<any, any, any> & {
+    minerMarketInfos: import("mongoose").Model<MinerMarketInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, MinerMarketInfo & import("mongoose").Document<any, any, any>> & MinerMarketInfo & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllMinerMarketInfos(): Promise<MinerMarketInfo[]>;
     findMinerMarketInfoById(minerMarketInfoId: Types.ObjectId): Promise<MinerMarketInfo>;
     createMinerMarketInfo(minerMarketInfoData: CreateMinerMarketInfoRequest): Promise<MinerMarketInfo>;

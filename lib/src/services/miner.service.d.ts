@@ -29,9 +29,9 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the Miner database resource.
  */
 export declare class MinerService {
-    miners: import("mongoose").Model<Miner & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Miner & import("mongoose").Document<any, any, any>> & Omit<Miner & import("mongoose").Document<any, any, any> & {
+    miners: import("mongoose").Model<Miner & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Miner & import("mongoose").Document<any, any, any>> & Miner & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllMiners(): Promise<Miner[]>;
     findMinerByFriendlyId(friendlyMinerId: string): Promise<Miner>;
     findMinerById(minerId: Types.ObjectId): Promise<Miner>;

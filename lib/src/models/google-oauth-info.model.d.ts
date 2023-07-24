@@ -23,9 +23,9 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
-import { Customer } from "wemine-apis";
-declare const accountModel: import("mongoose").Model<Customer & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Customer & Document<any, any, any>> & Customer & Document<any, any, any> & {
+import { GoogleOAuthInfo } from "wemine-apis";
+declare const googleOAuthInfoModel: import("mongoose").Model<GoogleOAuthInfo & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, GoogleOAuthInfo & Document<any, any, any>> & GoogleOAuthInfo & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
 }, any>;
-export default accountModel;
-//# sourceMappingURL=customer.model.d.ts.map
+export default googleOAuthInfoModel;
+//# sourceMappingURL=google-oauth-info.model.d.ts.map

@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { InventoryItem } from "wemine-apis";
-declare const inventoryItemModel: import("mongoose").Model<InventoryItem & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, InventoryItem & Document<any, any, any>> & Omit<InventoryItem & Document<any, any, any> & {
+declare const inventoryItemModel: import("mongoose").Model<InventoryItem & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, InventoryItem & Document<any, any, any>> & InventoryItem & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default inventoryItemModel;
 //# sourceMappingURL=inventory-item.model.d.ts.map

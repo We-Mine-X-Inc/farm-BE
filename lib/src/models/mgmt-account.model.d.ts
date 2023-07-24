@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { MgmtAccount } from "wemine-apis";
-declare const mgmtAccountModel: import("mongoose").Model<MgmtAccount & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MgmtAccount & Document<any, any, any>> & Omit<MgmtAccount & Document<any, any, any> & {
+declare const mgmtAccountModel: import("mongoose").Model<MgmtAccount & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MgmtAccount & Document<any, any, any>> & MgmtAccount & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default mgmtAccountModel;
 //# sourceMappingURL=mgmt-account.model.d.ts.map

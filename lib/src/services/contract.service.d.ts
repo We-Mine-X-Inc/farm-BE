@@ -32,9 +32,9 @@ export type GetContractRequest = {
  * Exposes operations allowable on the Contract database resource.
  */
 export declare class ContractService {
-    contracts: import("mongoose").Model<Contract & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Contract & import("mongoose").Document<any, any, any>> & Omit<Contract & import("mongoose").Document<any, any, any> & {
+    contracts: import("mongoose").Model<Contract & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Contract & import("mongoose").Document<any, any, any>> & Contract & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllContracts(): Promise<Contract[]>;
     findContractById(contractId: Types.ObjectId): Promise<Contract>;
     findContractByMiner(request: GetContractRequest): Promise<Contract>;

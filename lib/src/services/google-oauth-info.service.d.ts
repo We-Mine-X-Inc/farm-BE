@@ -21,11 +21,18 @@
 /// <reference types="mongoose/types/utility" />
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
+/// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { Document } from "mongoose";
-import { Customer } from "wemine-apis";
-declare const accountModel: import("mongoose").Model<Customer & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Customer & Document<any, any, any>> & Customer & Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}, any>;
-export default accountModel;
-//# sourceMappingURL=customer.model.d.ts.map
+import { GoogleOAuthServiceType } from "wemine-apis";
+import { GoogleOAuthInfo } from "wemine-apis";
+/**
+ * Exposes operations allowable on the GoogleOAuthInfo database resource.
+ */
+export declare class GoogleOAuthInfoService {
+    googleOAuthInfos: import("mongoose").Model<GoogleOAuthInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, GoogleOAuthInfo & import("mongoose").Document<any, any, any>> & GoogleOAuthInfo & import("mongoose").Document<any, any, any> & {
+        _id: import("mongoose").Types.ObjectId;
+    }, any>;
+    findAllGoogleOAuthInfos(): Promise<GoogleOAuthInfo[]>;
+    findGoogleOAuthInfoByType(googleOAuthType: GoogleOAuthServiceType): Promise<GoogleOAuthInfo>;
+}
+//# sourceMappingURL=google-oauth-info.service.d.ts.map

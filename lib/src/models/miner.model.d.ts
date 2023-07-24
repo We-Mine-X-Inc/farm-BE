@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { Miner } from "wemine-apis";
-declare const minerModel: import("mongoose").Model<Miner & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Miner & Document<any, any, any>> & Omit<Miner & Document<any, any, any> & {
+declare const minerModel: import("mongoose").Model<Miner & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Miner & Document<any, any, any>> & Miner & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default minerModel;
 //# sourceMappingURL=miner.model.d.ts.map

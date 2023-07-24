@@ -29,9 +29,9 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the Pool database resource.
  */
 export declare class PoolService {
-    pools: import("mongoose").Model<Pool & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Pool & import("mongoose").Document<any, any, any>> & Omit<Pool & import("mongoose").Document<any, any, any> & {
+    pools: import("mongoose").Model<Pool & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Pool & import("mongoose").Document<any, any, any>> & Pool & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllPools(): Promise<Pool[]>;
     findPoolById(poolId: Types.ObjectId): Promise<Pool>;
     createPool(poolData: CreatePoolRequest): Promise<Pool>;

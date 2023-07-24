@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { CoinMarketInfo } from "wemine-apis";
-declare const coinMarketInfoModel: import("mongoose").Model<CoinMarketInfo & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, CoinMarketInfo & Document<any, any, any>> & Omit<CoinMarketInfo & Document<any, any, any> & {
+declare const coinMarketInfoModel: import("mongoose").Model<CoinMarketInfo & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, CoinMarketInfo & Document<any, any, any>> & CoinMarketInfo & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default coinMarketInfoModel;
 //# sourceMappingURL=coin-market-info.model.d.ts.map

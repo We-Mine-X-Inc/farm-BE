@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { UptimeTick } from "wemine-apis";
-declare const uptimeTickModel: import("mongoose").Model<UptimeTick & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, UptimeTick & Document<any, any, any>> & Omit<UptimeTick & Document<any, any, any> & {
+declare const uptimeTickModel: import("mongoose").Model<UptimeTick & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, UptimeTick & Document<any, any, any>> & UptimeTick & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default uptimeTickModel;
 //# sourceMappingURL=uptime-tick.model.d.ts.map

@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { WorkerHashRateContributionModel } from "wemine-apis";
 import { Document } from "mongoose";
-declare const workerHashRateContributionModel: import("mongoose").Model<WorkerHashRateContributionModel & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, WorkerHashRateContributionModel & Document<any, any, any>> & Omit<WorkerHashRateContributionModel & Document<any, any, any> & {
+declare const workerHashRateContributionModel: import("mongoose").Model<WorkerHashRateContributionModel & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, WorkerHashRateContributionModel & Document<any, any, any>> & WorkerHashRateContributionModel & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default workerHashRateContributionModel;
 //# sourceMappingURL=account-worker-hash-rate-contribution.model.d.ts.map

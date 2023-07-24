@@ -24,8 +24,8 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import { Pool } from "wemine-apis";
-declare const poolModel: import("mongoose").Model<Pool & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Pool & Document<any, any, any>> & Omit<Pool & Document<any, any, any> & {
+declare const poolModel: import("mongoose").Model<Pool & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, Pool & Document<any, any, any>> & Pool & Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
-}, never>, any>;
+}, any>;
 export default poolModel;
 //# sourceMappingURL=pool.model.d.ts.map

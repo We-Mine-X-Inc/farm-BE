@@ -29,9 +29,9 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the SupplierQuote database resource.
  */
 export declare class SupplierQuoteService {
-    supplierQuotes: import("mongoose").Model<SupplierQuote & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, SupplierQuote & import("mongoose").Document<any, any, any>> & Omit<SupplierQuote & import("mongoose").Document<any, any, any> & {
+    supplierQuotes: import("mongoose").Model<SupplierQuote & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, SupplierQuote & import("mongoose").Document<any, any, any>> & SupplierQuote & import("mongoose").Document<any, any, any> & {
         _id: Types.ObjectId;
-    }, never>, any>;
+    }, any>;
     findAllSupplierQuotes(): Promise<SupplierQuote[]>;
     findSupplierQuoteById(supplierQuoteId: Types.ObjectId): Promise<SupplierQuote>;
     createSupplierQuote(supplierQuoteData: CreateSupplierQuoteRequest): Promise<SupplierQuote>;
