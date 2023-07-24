@@ -1,7 +1,12 @@
 import { model, Schema, Document } from "mongoose";
-import { GoogleOAuthInfo } from "wemine-apis";
+import { GoogleOAuthInfo, GoogleOAuthServiceType } from "wemine-apis";
 
 const googleOAuthInfoSchema: Schema = new Schema({
+  serviceType: {
+    type: Number,
+    enum: GoogleOAuthServiceType,
+    required: true,
+  },
   clientId: {
     type: String,
     required: true,
