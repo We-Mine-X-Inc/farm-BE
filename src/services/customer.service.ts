@@ -16,9 +16,7 @@ export class CustomerService {
     return customers;
   }
 
-  public async foundCustomerById(
-    customerId: Types.ObjectId
-  ): Promise<Customer> {
+  public async findCustomerById(customerId: Types.ObjectId): Promise<Customer> {
     const foundCustomer = await this.customers.findOne({
       _id: customerId,
     });
@@ -27,7 +25,7 @@ export class CustomerService {
     return foundCustomer;
   }
 
-  public async foundCustomerByEmail(customerEmail: string): Promise<Customer> {
+  public async findCustomerByEmail(customerEmail: string): Promise<Customer> {
     const foundCustomer = await this.customers.findOne({
       email: customerEmail,
     });
