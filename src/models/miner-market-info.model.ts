@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { CoinType, MinerMarketInfo } from "wemine-apis";
 
 const minerMarketInfoSchema: Schema = new Schema({
@@ -18,9 +18,8 @@ const minerMarketInfoSchema: Schema = new Schema({
   },
 });
 
-const minerMarketInfoModel = model<MinerMarketInfo & Document>(
-  "MinerMarketInfo",
-  minerMarketInfoSchema
-);
+const minerMarketInfoModel =
+  mongoose.models["MinerMarketInfo"] ||
+  model<MinerMarketInfo & Document>("MinerMarketInfo", minerMarketInfoSchema);
 
 export default minerMarketInfoModel;

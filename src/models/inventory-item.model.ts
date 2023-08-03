@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import {
   HashAlgorithmType,
   InventoryItem,
@@ -61,9 +61,8 @@ const inventoryItemSchema: Schema = new Schema({
   operationalMetadata: operationalMetadataSchema,
 });
 
-const inventoryItemModel = model<InventoryItem & Document>(
-  "InventoryItem",
-  inventoryItemSchema
-);
+const inventoryItemModel =
+  mongoose.models["InventoryItem"] ||
+  model<InventoryItem & Document>("InventoryItem", inventoryItemSchema);
 
 export default inventoryItemModel;

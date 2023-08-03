@@ -6,7 +6,7 @@ import {
   MinerIntakeStage,
   MinerResaleStage,
 } from "wemine-apis";
-import { model, Schema, Document, Types } from "mongoose";
+import mongoose, { model, Schema, Document, Types } from "mongoose";
 
 const contractDurationSchema = {
   startDateInMillis: {
@@ -126,6 +126,8 @@ const contractSchema: Schema = new Schema({
   poolActivity: poolActivitySchema,
 });
 
-const contractModel = model<Contract & Document>("Contract", contractSchema);
+const contractModel =
+  mongoose.models["Contract"] ||
+  model<Contract & Document>("Contract", contractSchema);
 
 export default contractModel;

@@ -1,31 +1,4 @@
-/// <reference types="mongoose/types/aggregate" />
-/// <reference types="mongoose/types/callback" />
-/// <reference types="mongoose/types/collection" />
-/// <reference types="mongoose/types/connection" />
-/// <reference types="mongoose/types/cursor" />
-/// <reference types="mongoose/types/document" />
-/// <reference types="mongoose/types/error" />
-/// <reference types="mongoose/types/expressions" />
-/// <reference types="mongoose/types/helpers" />
-/// <reference types="mongoose/types/middlewares" />
-/// <reference types="mongoose/types/indexes" />
-/// <reference types="mongoose/types/models" />
-/// <reference types="mongoose/types/mongooseoptions" />
-/// <reference types="mongoose/types/pipelinestage" />
-/// <reference types="mongoose/types/populate" />
-/// <reference types="mongoose/types/query" />
-/// <reference types="mongoose/types/schemaoptions" />
-/// <reference types="mongoose/types/schematypes" />
-/// <reference types="mongoose/types/session" />
-/// <reference types="mongoose/types/types" />
-/// <reference types="mongoose/types/utility" />
-/// <reference types="mongoose/types/validation" />
-/// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose/types/inferschematype" />
-import { MiningAccountRevenue } from "wemine-apis";
-import { Document } from "mongoose";
-declare const accountRevenueModel: import("mongoose").Model<MiningAccountRevenue & Document<any, any, any>, {}, {}, {}, Document<unknown, {}, MiningAccountRevenue & Document<any, any, any>> & MiningAccountRevenue & Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}, any>;
+import mongoose from "mongoose";
+declare const accountRevenueModel: mongoose.Model<any, {}, {}, {}, any, any>;
 export default accountRevenueModel;
 //# sourceMappingURL=account-revenue.model.d.ts.map

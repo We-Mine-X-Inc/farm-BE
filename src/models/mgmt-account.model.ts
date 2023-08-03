@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { MgmtAccount } from "wemine-apis";
 
 const contractModePermissionsSchema = {
@@ -89,9 +89,8 @@ const mgmtAccountSchema: Schema = new Schema({
   mgmtPermissions: mgmtPermissionsSchema,
 });
 
-const mgmtAccountModel = model<MgmtAccount & Document>(
-  "MgmtAccount",
-  mgmtAccountSchema
-);
+const mgmtAccountModel =
+  mongoose.models["MgmtAccount"] ||
+  model<MgmtAccount & Document>("MgmtAccount", mgmtAccountSchema);
 
 export default mgmtAccountModel;

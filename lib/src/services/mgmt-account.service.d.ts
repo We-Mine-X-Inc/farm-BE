@@ -29,9 +29,7 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the MgmtAccount database resource.
  */
 export declare class MgmtAccountService {
-    mgmtAccounts: import("mongoose").Model<MgmtAccount & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, MgmtAccount & import("mongoose").Document<any, any, any>> & MgmtAccount & import("mongoose").Document<any, any, any> & {
-        _id: Types.ObjectId;
-    }, any>;
+    mgmtAccounts: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllMgmtAccount(): Promise<MgmtAccount[]>;
     findMgmtAccountById(mgmtAccountId: Types.ObjectId): Promise<MgmtAccount>;
     createMgmtAccount(mgmtAccountData: CreateMgmtAccountRequest): Promise<MgmtAccount>;

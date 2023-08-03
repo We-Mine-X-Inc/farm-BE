@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { SupplierQuote } from "wemine-apis";
 
 const supplierQuoteSchema: Schema = new Schema({
@@ -29,9 +29,8 @@ const supplierQuoteSchema: Schema = new Schema({
   },
 });
 
-const supplierQuoteModel = model<SupplierQuote & Document>(
-  "SupplierQuote",
-  supplierQuoteSchema
-);
+const supplierQuoteModel =
+  mongoose.models["SupplierQuote"] ||
+  model<SupplierQuote & Document>("SupplierQuote", supplierQuoteSchema);
 
 export default supplierQuoteModel;

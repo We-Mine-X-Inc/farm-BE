@@ -1,1 +1,1 @@
-{"version":3,"file":"supplier-quote.model.d.ts","sourceRoot":"","sources":["../../../src/models/supplier-quote.model.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA,OAAO,EAAiB,QAAQ,EAAE,MAAM,UAAU,CAAC;AACnD,OAAO,EAAE,aAAa,EAAE,MAAM,aAAa,CAAC;AA8B5C,QAAA,MAAM,kBAAkB;;OAGvB,CAAC;AAEF,eAAe,kBAAkB,CAAC"}
+{"version":3,"file":"supplier-quote.model.d.ts","sourceRoot":"","sources":["../../../src/models/supplier-quote.model.ts"],"names":[],"mappings":"AAAA,OAAO,QAAqC,MAAM,UAAU,CAAC;AA+B7D,QAAA,MAAM,kBAAkB,2CAE+C,CAAC;AAExE,eAAe,kBAAkB,CAAC"}

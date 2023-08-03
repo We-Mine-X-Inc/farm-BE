@@ -29,9 +29,7 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the CoinMarketInfo database resource.
  */
 export declare class CoinMarketInfoService {
-    coinMarketInfos: import("mongoose").Model<CoinMarketInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, CoinMarketInfo & import("mongoose").Document<any, any, any>> & CoinMarketInfo & import("mongoose").Document<any, any, any> & {
-        _id: Types.ObjectId;
-    }, any>;
+    coinMarketInfos: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllCoinMarketInfos(): Promise<CoinMarketInfo[]>;
     findCoinMarketInfoById(coinMarketInfoId: Types.ObjectId): Promise<CoinMarketInfo>;
     createCoinMarketInfo(coinMarketInfoData: CreateCoinMarketInfoRequest): Promise<CoinMarketInfo>;

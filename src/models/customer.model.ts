@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { Customer } from "wemine-apis";
 
 const accountSchema: Schema = new Schema({
@@ -29,6 +29,8 @@ const accountSchema: Schema = new Schema({
   },
 });
 
-const accountModel = model<Customer & Document>("Customer", accountSchema);
+const accountModel =
+  mongoose.models["Customer"] ||
+  model<Customer & Document>("Customer", accountSchema);
 
 export default accountModel;

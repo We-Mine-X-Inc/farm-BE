@@ -29,9 +29,7 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the FacilityInfo database resource.
  */
 export declare class FacilityInfoService {
-    facilityInfos: import("mongoose").Model<FacilityInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, FacilityInfo & import("mongoose").Document<any, any, any>> & FacilityInfo & import("mongoose").Document<any, any, any> & {
-        _id: Types.ObjectId;
-    }, any>;
+    facilityInfos: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllFacilityInfos(): Promise<FacilityInfo[]>;
     findFacilityInfoById(facilityInfoId: Types.ObjectId): Promise<FacilityInfo>;
     createFacilityInfo(facilityInfoData: CreateFacilityInfoReqeust): Promise<FacilityInfo>;

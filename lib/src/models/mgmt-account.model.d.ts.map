@@ -1,1 +1,1 @@
-{"version":3,"file":"mgmt-account.model.d.ts","sourceRoot":"","sources":["../../../src/models/mgmt-account.model.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA,OAAO,EAAiB,QAAQ,EAAE,MAAM,UAAU,CAAC;AACnD,OAAO,EAAE,WAAW,EAAE,MAAM,aAAa,CAAC;AA0F1C,QAAA,MAAM,gBAAgB;;OAGrB,CAAC;AAEF,eAAe,gBAAgB,CAAC"}
+{"version":3,"file":"mgmt-account.model.d.ts","sourceRoot":"","sources":["../../../src/models/mgmt-account.model.ts"],"names":[],"mappings":"AAAA,OAAO,QAAqC,MAAM,UAAU,CAAC;AA2F7D,QAAA,MAAM,gBAAgB,2CAE2C,CAAC;AAElE,eAAe,gBAAgB,CAAC"}

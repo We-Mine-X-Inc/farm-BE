@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { GoogleOAuthInfo, GoogleOAuthServiceType } from "wemine-apis";
 
 const googleOAuthInfoSchema: Schema = new Schema({
@@ -25,9 +25,8 @@ const googleOAuthInfoSchema: Schema = new Schema({
   },
 });
 
-const googleOAuthInfoModel = model<GoogleOAuthInfo & Document>(
-  "GoogleOAuthInfo",
-  googleOAuthInfoSchema
-);
+const googleOAuthInfoModel =
+  mongoose.models["GoogleOAuthInfo"] ||
+  model<GoogleOAuthInfo & Document>("GoogleOAuthInfo", googleOAuthInfoSchema);
 
 export default googleOAuthInfoModel;

@@ -29,9 +29,7 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the InventoryItem database resource.
  */
 export declare class InventoryItemService {
-    inventoryItems: import("mongoose").Model<InventoryItem & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, InventoryItem & import("mongoose").Document<any, any, any>> & InventoryItem & import("mongoose").Document<any, any, any> & {
-        _id: Types.ObjectId;
-    }, any>;
+    inventoryItems: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllInventoryItems(): Promise<InventoryItem[]>;
     findInventoryItemById(inventoryItemId: Types.ObjectId): Promise<InventoryItem>;
     createInventoryItem(inventoryItemData: CreateInventoryItemReqeust): Promise<InventoryItem>;

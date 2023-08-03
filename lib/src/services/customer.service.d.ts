@@ -29,9 +29,7 @@ import { Types } from "mongoose";
  * Exposes operations allowable on the Customer database resource.
  */
 export declare class CustomerService {
-    customers: import("mongoose").Model<Customer & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, Customer & import("mongoose").Document<any, any, any>> & Customer & import("mongoose").Document<any, any, any> & {
-        _id: Types.ObjectId;
-    }, any>;
+    customers: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllCustomer(): Promise<Customer[]>;
     findCustomerById(customerId: Types.ObjectId): Promise<Customer>;
     findCustomerByEmail(customerEmail: string): Promise<Customer>;

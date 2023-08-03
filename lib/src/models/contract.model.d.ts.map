@@ -1,1 +1,1 @@
-{"version":3,"file":"contract.model.d.ts","sourceRoot":"","sources":["../../../src/models/contract.model.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA,OAAO,EAEL,QAAQ,EAKT,MAAM,aAAa,CAAC;AACrB,OAAO,EAAiB,QAAQ,EAAE,KAAK,EAAE,MAAM,UAAU,CAAC;AAwH1D,QAAA,MAAM,aAAa;;OAAyD,CAAC;AAE7E,eAAe,aAAa,CAAC"}
+{"version":3,"file":"contract.model.d.ts","sourceRoot":"","sources":["../../../src/models/contract.model.ts"],"names":[],"mappings":"AAQA,OAAO,QAA4C,MAAM,UAAU,CAAC;AAwHpE,QAAA,MAAM,aAAa,2CAEqC,CAAC;AAEzD,eAAe,aAAa,CAAC"}

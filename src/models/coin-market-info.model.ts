@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { CoinMarketInfo, CoinType } from "wemine-apis";
 
 const coinMarketInfoSchema: Schema = new Schema({
@@ -13,9 +13,8 @@ const coinMarketInfoSchema: Schema = new Schema({
   },
 });
 
-const coinMarketInfoModel = model<CoinMarketInfo & Document>(
-  "CoinMarketInfo",
-  coinMarketInfoSchema
-);
+const coinMarketInfoModel =
+  mongoose.models["CoinMarketInfo"] ||
+  model<CoinMarketInfo & Document>("CoinMarketInfo", coinMarketInfoSchema);
 
 export default coinMarketInfoModel;

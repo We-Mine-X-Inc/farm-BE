@@ -29,9 +29,7 @@ import { GoogleOAuthInfo } from "wemine-apis";
  * Exposes operations allowable on the GoogleOAuthInfo database resource.
  */
 export declare class GoogleOAuthInfoService {
-    googleOAuthInfos: import("mongoose").Model<GoogleOAuthInfo & import("mongoose").Document<any, any, any>, {}, {}, {}, import("mongoose").Document<unknown, {}, GoogleOAuthInfo & import("mongoose").Document<any, any, any>> & GoogleOAuthInfo & import("mongoose").Document<any, any, any> & {
-        _id: import("mongoose").Types.ObjectId;
-    }, any>;
+    googleOAuthInfos: import("mongoose").Model<any, {}, {}, {}, any, any>;
     findAllGoogleOAuthInfos(): Promise<GoogleOAuthInfo[]>;
     findGoogleOAuthInfoByType(googleOAuthType: GoogleOAuthServiceType): Promise<GoogleOAuthInfo>;
 }

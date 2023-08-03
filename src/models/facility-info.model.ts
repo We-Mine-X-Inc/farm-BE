@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { FacilityInfo } from "wemine-apis";
 
 const facilityInfoSchema: Schema = new Schema({
@@ -32,9 +32,8 @@ const facilityInfoSchema: Schema = new Schema({
   },
 });
 
-const facilityInfoModel = model<FacilityInfo & Document>(
-  "FacilityInfo",
-  facilityInfoSchema
-);
+const facilityInfoModel =
+  mongoose.models["FacilityInfo"] ||
+  model<FacilityInfo & Document>("FacilityInfo", facilityInfoSchema);
 
 export default facilityInfoModel;

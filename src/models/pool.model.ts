@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { Pool, PoolPurposeType, PoolType } from "wemine-apis";
 
 const poolSchema: Schema = new Schema({
@@ -35,6 +35,7 @@ const poolSchema: Schema = new Schema({
   },
 });
 
-const poolModel = model<Pool & Document>("Pool", poolSchema);
+const poolModel =
+  mongoose.models["Pool"] || model<Pool & Document>("Pool", poolSchema);
 
 export default poolModel;

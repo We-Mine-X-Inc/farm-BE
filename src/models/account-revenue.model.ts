@@ -1,5 +1,5 @@
 import { MiningAccountRevenue } from "wemine-apis";
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { RevenueSchema } from "./performance/revenue.model";
 import { TimeRangeSchema } from "./performance/time.model";
 
@@ -16,9 +16,11 @@ const accountRevenueSchema: Schema = new Schema({
   },
 });
 
-const accountRevenueModel = model<MiningAccountRevenue & Document>(
-  "MiningAccountRevenue",
-  accountRevenueSchema
-);
+const accountRevenueModel =
+  mongoose.models["MiningAccountRevenue"] ||
+  model<MiningAccountRevenue & Document>(
+    "MiningAccountRevenue",
+    accountRevenueSchema
+  );
 
 export default accountRevenueModel;

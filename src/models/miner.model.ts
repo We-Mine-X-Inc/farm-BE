@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import mongoose, { model, Schema, Document } from "mongoose";
 import { Miner, MinerNetworkStatus, MinerApiType } from "wemine-apis";
 
 const minerStatusSchema = {
@@ -66,6 +66,7 @@ const minerSchema: Schema = new Schema({
   rackLocation: rackLocationSchema,
 });
 
-const minerModel = model<Miner & Document>("Miner", minerSchema);
+const minerModel =
+  mongoose.models["Miner"] || model<Miner & Document>("Miner", minerSchema);
 
 export default minerModel;
