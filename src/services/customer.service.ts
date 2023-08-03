@@ -16,13 +16,24 @@ export class CustomerService {
     return customers;
   }
 
-  public async findCustomerById(customerId: Types.ObjectId): Promise<Customer> {
-    const findCustomer = await this.customers.findOne({
+  public async foundCustomerById(
+    customerId: Types.ObjectId
+  ): Promise<Customer> {
+    const foundCustomer = await this.customers.findOne({
       _id: customerId,
     });
-    if (!findCustomer) throw new RpcException(409, "You're not customer");
+    if (!foundCustomer) throw new RpcException(409, "You're not customer");
 
-    return findCustomer;
+    return foundCustomer;
+  }
+
+  public async foundCustomerByEmail(customerEmail: string): Promise<Customer> {
+    const foundCustomer = await this.customers.findOne({
+      email: customerEmail,
+    });
+    if (!foundCustomer) throw new RpcException(409, "You're not customer");
+
+    return foundCustomer;
   }
 
   public async createCustomer(
@@ -31,10 +42,10 @@ export class CustomerService {
     if (isEmpty(customerData))
       throw new RpcException(400, "You're not customerData");
 
-    const findCustomer = await this.customers.findOne({
+    const foundCustomer = await this.customers.findOne({
       email: customerData.email,
     });
-    if (findCustomer)
+    if (foundCustomer)
       throw new RpcException(
         409,
         `You're email ${customerData.email} already exists`
@@ -47,7 +58,7 @@ export class CustomerService {
     return createCustomerData;
   }
 
-  public async updateCustomer(
+  public async updateCustomerById(
     customerId: Types.ObjectId,
     customerData: CreateCustomerRequest
   ): Promise<Customer> {
@@ -55,10 +66,10 @@ export class CustomerService {
       throw new RpcException(400, "You're not customerData");
 
     if (customerData.email) {
-      const findCustomer = await this.customers.findOne({
+      const foundCustomer = await this.customers.findOne({
         email: customerData.email,
       });
-      if (findCustomer && !findCustomer._id.equals(customerId))
+      if (foundCustomer && !foundCustomer._id.equals(customerId))
         throw new RpcException(
           409,
           `You're email ${customerData.email} already exists`

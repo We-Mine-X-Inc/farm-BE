@@ -33,9 +33,10 @@ export declare class CustomerService {
         _id: Types.ObjectId;
     }, any>;
     findAllCustomer(): Promise<Customer[]>;
-    findCustomerById(customerId: Types.ObjectId): Promise<Customer>;
+    foundCustomerById(customerId: Types.ObjectId): Promise<Customer>;
+    foundCustomerByEmail(customerEmail: string): Promise<Customer>;
     createCustomer(customerData: CreateCustomerRequest): Promise<Customer>;
-    updateCustomer(customerId: Types.ObjectId, customerData: CreateCustomerRequest): Promise<Customer>;
+    updateCustomerById(customerId: Types.ObjectId, customerData: CreateCustomerRequest): Promise<Customer>;
     deleteCustomer(customerId: Types.ObjectId): Promise<Customer>;
 }
 //# sourceMappingURL=customer.service.d.ts.map
