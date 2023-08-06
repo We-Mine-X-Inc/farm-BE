@@ -39,7 +39,7 @@ export class MgmtAccountService {
     if (findMgmtAccount)
       throw new RpcException(
         409,
-        `You're email ${mgmtAccountData.email} already exists`
+        `You're email ${mgmtAccountData.email} mgmt exists`
       );
 
     const createMgmtAccountData: MgmtAccount = await this.mgmtAccounts.create({
@@ -63,7 +63,7 @@ export class MgmtAccountService {
       if (findMgmtAccount && !findMgmtAccount._id.equals(mgmtAccountId))
         throw new RpcException(
           409,
-          `You're email ${mgmtAccountData.email} already exists`
+          `You're email ${mgmtAccountData.email} mgmt exists`
         );
     }
 
