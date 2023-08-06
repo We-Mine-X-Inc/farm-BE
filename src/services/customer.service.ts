@@ -4,6 +4,7 @@ import { Customer } from "wemine-apis";
 import customerModel from "@models/customer.model";
 import { isEmpty } from "@utils/util";
 import { Types } from "mongoose";
+import { format as prettyFormat } from "pretty-format";
 
 /**
  * Exposes operations allowable on the Customer database resource.
@@ -46,7 +47,7 @@ export class CustomerService {
     if (foundCustomer)
       throw new RpcException(
         409,
-        `You're email ${customerData.email} already exists`
+        `Your email ${customerData.email} already exists`
       );
 
     const createCustomerData: Customer = await this.customers.create({
@@ -67,10 +68,16 @@ export class CustomerService {
       const foundCustomer = await this.customers.findOne({
         email: customerData.email,
       });
+      console.log("update foundCustomer:");
+      console.log(prettyFormat(foundCustomer._id));
+      console.log(foundCustomer._id.toString());
+      console.log("update providedId:");
+      console.log(prettyFormat(customerId));
+      console.log(customerId.toString());
       if (foundCustomer && !foundCustomer._id.equals(customerId))
         throw new RpcException(
           409,
-          `You're email ${customerData.email} already exists`
+          `Your email ${customerData.email} mismatches the provided id: ${customerId}.`
         );
     }
 
