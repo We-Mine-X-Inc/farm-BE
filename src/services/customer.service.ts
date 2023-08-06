@@ -68,17 +68,21 @@ export class CustomerService {
       const foundCustomer = await this.customers.findOne({
         email: customerData.email,
       });
-      console.log("update foundCustomer:");
-      console.log(prettyFormat(foundCustomer._id));
-      console.log(foundCustomer._id.toString());
-      console.log("update providedId:");
-      console.log(prettyFormat(customerId));
-      console.log(customerId.toString());
+      // console.log("update foundCustomer:");
+      // console.log(prettyFormat(foundCustomer._id));
+      // console.log(foundCustomer._id.toString());
+      // console.log("update providedId:");
+      // console.log(prettyFormat(customerId));
+      // console.log(customerId.toString());
       if (foundCustomer && !foundCustomer._id.equals(customerId))
         throw new RpcException(
           409,
-          `Your email ${customerData.email} is tied to a different user account than the id you
-          provided: ${customerId}.`
+          `Your email ${
+            customerData.email
+          } is tied to a different user account than the id you
+          provided: ${prettyFormat(customerId)} ---- ${prettyFormat(
+            foundCustomer._id
+          )}.`
         );
     }
 
