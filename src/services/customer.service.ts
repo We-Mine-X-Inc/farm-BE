@@ -77,7 +77,8 @@ export class CustomerService {
       if (foundCustomer && !foundCustomer._id.equals(customerId))
         throw new RpcException(
           409,
-          `Your email ${customerData.email} mismatches the provided id: ${customerId}.`
+          `Your email ${customerData.email} is tied to a different user account than the id you
+          provided: ${customerId}.`
         );
     }
 
