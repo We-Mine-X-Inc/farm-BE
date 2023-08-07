@@ -27,6 +27,10 @@ const accountSchema: Schema = new Schema({
     type: Boolean,
     required: true,
   },
+  hasSubmittedSignUpInfo: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const accountModel =
