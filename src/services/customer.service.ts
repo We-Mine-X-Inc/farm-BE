@@ -68,6 +68,7 @@ export class CustomerService {
       const foundCustomer = await this.customers.findOne({
         email: customerData.email,
       });
+      console.log(prettyFormat(foundCustomer));
       if (foundCustomer && !foundCustomer._id.equals(customerId))
         throw new RpcException(
           409,
