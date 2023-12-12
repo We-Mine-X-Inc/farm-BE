@@ -1,10 +1,9 @@
 import {
   CoinType,
-  Contract,
+  HostingContract,
   ContractStage,
   MinerHostingConfigurationStage,
   MinerIntakeStage,
-  MinerResaleStage,
 } from "wemine-apis";
 import { Schema, Document, Types, Connection } from "mongoose";
 
@@ -31,32 +30,9 @@ const poolMiningOptionsSchema = {
   },
 };
 
-const hostingContractSchema = {
-  hostingStage: {
-    type: Number,
-    enum: MinerHostingConfigurationStage,
-    required: true,
-  },
-  contractDuration: contractDurationSchema,
-  finalCompanyPool: {
-    type: Schema.Types.ObjectId,
-    ref: "Pool",
-    required: true,
-  },
-  poolMiningOptions: [poolMiningOptionsSchema],
-};
-
 const poolActivitySchema = {
   expectedActivePoolIndex: {
     type: Number,
-    required: true,
-  },
-};
-
-const resaleContractSchema = {
-  resaleStage: {
-    type: Number,
-    enum: MinerResaleStage,
     required: true,
   },
 };
@@ -94,10 +70,10 @@ const marketInfoAtRatificationSchema = {
   minerMarketInfo: minerMarketInfoSchema,
 };
 
-const contractSchema: Schema = new Schema({
+const hostingContractSchema: Schema = new Schema({
   previousContract: {
     type: Schema.Types.ObjectId,
-    ref: "Contract",
+    ref: "HostingContract",
     required: false,
   },
   customer: {
@@ -105,9 +81,9 @@ const contractSchema: Schema = new Schema({
     ref: "Customer",
     required: true,
   },
-  miner: {
+  hostedMiner: {
     type: Schema.Types.ObjectId,
-    ref: "Miner",
+    ref: "HostedMiner",
     required: true,
   },
   contractStage: {
@@ -120,15 +96,28 @@ const contractSchema: Schema = new Schema({
     enum: MinerIntakeStage,
     required: true,
   },
-  hostingContract: hostingContractSchema,
-  resaleContract: resaleContractSchema,
+  hostingStage: {
+    type: Number,
+    enum: MinerHostingConfigurationStage,
+    required: true,
+  },
+  contractDuration: contractDurationSchema,
+  finalCompanyPool: {
+    type: Schema.Types.ObjectId,
+    ref: "Pool",
+    required: true,
+  },
+  poolMiningOptions: [poolMiningOptionsSchema],
   marketInfoAtRatification: marketInfoAtRatificationSchema,
   poolActivity: poolActivitySchema,
 });
 
-export function loadContractModel(connection: Connection) {
+export function loadHostingContractModel(connection: Connection) {
   return (
-    connection.models["Contract"] ||
-    connection.model<Contract & Document>("Contract", contractSchema)
+    connection.models["HostingContract"] ||
+    connection.model<HostingContract & Document>(
+      "HostingContract",
+      hostingContractSchema
+    )
   );
 }

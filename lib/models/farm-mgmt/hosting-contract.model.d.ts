@@ -23,5 +23,5 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Connection } from "mongoose";
-export declare function loadContractModel(connection: Connection): import("mongoose").Model<any, {}, {}, {}, any, any>;
-//# sourceMappingURL=contract.model.d.ts.map
+export declare function loadHostingContractModel(connection: Connection): import("mongoose").Model<any, {}, {}, {}, any, any>;
+//# sourceMappingURL=hosting-contract.model.d.ts.map

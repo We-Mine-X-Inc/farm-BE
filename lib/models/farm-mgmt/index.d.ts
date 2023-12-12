@@ -1,4 +1,4 @@
-export * from "./contract.model";
+export * from "./hosting-contract.model";
 export * from "./customer.model";
 export * from "./facility-info.model";
 export * from "./power-controller.model";
